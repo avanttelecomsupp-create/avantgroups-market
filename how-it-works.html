@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How It Works — AvantGroups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:#FFFBF4;color:#1A0F00;}
+:root{
+  --am:#C17B00;--dk:#3D1800;--go:#E09000;--cr:#FFF3E0;
+  --cv:#FFFBF4;--td:#1A0F00;--tb:#4A3820;--tm:#9A8070;
+  --ac:#B84200;--gr:#1B6B3A;--wh:#fff;--ru:#D4A850;--md:#5C2D00;
+}
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:999;background:var(--dk);
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;transition:box-shadow .3s;}
+nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.55);}
+.nl{display:flex;align-items:center;gap:6px;text-decoration:none;}
+.nl .av{font-size:19px;font-weight:800;color:#fff;}
+.nl .gr2{font-size:19px;font-weight:800;color:var(--go);}
+.nl .dot{width:5px;height:5px;background:var(--am);border-radius:50%;margin:0 5px;}
+.nl .ur{font-size:10px;color:var(--tm);font-style:italic;}
+.nli{display:flex;gap:20px;list-style:none;}
+.nli a{color:rgba(255,255,255,.8);font-size:12.5px;text-decoration:none;transition:.2s;}
+.nli a:hover,.nli a.act{color:var(--go);}
+.nli a.act{border-bottom:2px solid var(--go);padding-bottom:1px;}
+.na{display:flex;gap:8px;}
+.bwa{border:1px solid var(--go);color:var(--go);background:transparent;border-radius:50px;
+     padding:7px 15px;font-size:11px;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit;}
+.bwa:hover{background:var(--go);color:var(--dk);}
+.bq{background:var(--am);color:#fff;border:none;border-radius:50px;
+    padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.bq:hover{background:var(--go);}
+.hm{display:none;font-size:22px;color:var(--go);cursor:pointer;background:none;border:none;}
+.mm{display:none;position:fixed;top:64px;left:0;right:0;background:var(--dk);
+    padding:20px 5%;flex-direction:column;gap:12px;z-index:998;
+    border-top:1px solid rgba(255,255,255,.1);}
+.mm a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;
+      padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.mm.op{display:flex;}
+/* ── SHARED LAYOUT ── */
+.sec{padding:80px 5%;}
+.ey{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.el{width:22px;height:3px;background:var(--am);border-radius:2px;}
+.et{font-size:10px;font-weight:700;color:var(--am);letter-spacing:3px;text-transform:uppercase;}
+.h2{font-size:36px;font-weight:800;line-height:1.1;}
+.sub{font-size:15px;color:var(--tm);margin-top:10px;max-width:640px;line-height:1.6;}
+/* ── CARDS ── */
+.card{background:#fff;border-radius:16px;padding:28px;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.11);}
+/* ── BTNS ── */
+.btn-am{background:var(--am);color:#fff;border:none;border-radius:50px;
+        padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-am:hover{background:var(--go);transform:translateY(-2px);}
+.btn-wa2{background:#25D366;color:#fff;border:none;border-radius:50px;
+         padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-wa2:hover{opacity:.9;}
+.btn-out{border:2px solid var(--am);color:var(--am);background:transparent;border-radius:50px;
+         padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-out:hover{background:var(--am);color:#fff;}
+/* ── TRUST BAR ── */
+.tbar{background:var(--dk);padding:15px 5%;display:flex;align-items:center;gap:24px;overflow:hidden;}
+.tlbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--tm);flex-shrink:0;white-space:nowrap;}
+.mwrap{overflow:hidden;flex:1;}
+.minn{display:flex;gap:10px;animation:mq 22s linear infinite;width:max-content;}
+.mwrap:hover .minn{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cpill{background:var(--md);border:1px solid var(--am);color:#fff;
+       border-radius:50px;padding:5px 16px;font-size:11px;white-space:nowrap;}
+/* ── FOOTER ── */
+footer{background:var(--dk);padding:56px 5% 36px;}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px;}
+.fb2{font-size:20px;font-weight:800;}
+.fb2 .av{color:#fff;}.fb2 .gr2{color:var(--go);}
+.furl{color:var(--go);font-style:italic;font-size:11px;margin-top:4px;}
+.ftag{color:rgba(255,255,255,.5);font-size:12px;margin-top:10px;}
+.fc2{color:rgba(255,255,255,.4);font-size:11px;margin-top:7px;}
+.fh{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.35);
+    text-transform:uppercase;margin-bottom:12px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.flinks a{color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s;}
+.flinks a:hover{color:var(--go);}
+.fti{color:rgba(255,255,255,.6);font-size:12px;margin-bottom:7px;}
+.fbot{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:22px;
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.fcop{color:rgba(255,255,255,.3);font-size:11px;}
+/* ── PAGE HERO BANDS ── */
+.hero-band{background:linear-gradient(135deg,var(--dk),var(--md));
+           padding:80px 5%;color:#fff;position:relative;overflow:hidden;}
+.hero-band::after{content:'AG';position:absolute;font-size:280px;font-weight:900;
+                  color:rgba(255,255,255,.04);right:-40px;top:-30px;pointer-events:none;
+                  line-height:1;user-select:none;}
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+/* ── TAG ── */
+.tag-g{display:inline-block;background:#E8F5E9;color:var(--gr);border-radius:50px;
+       padding:4px 12px;font-size:10px;font-weight:700;margin-top:10px;}
+.tag-am{display:inline-block;background:var(--cr);color:var(--am);border-radius:50px;
+        padding:4px 12px;font-size:10px;font-weight:700;}
+.badge{display:inline-flex;align-items:center;border:1px solid var(--am);color:var(--am);
+       background:var(--cr);border-radius:50px;padding:5px 13px;font-size:10px;
+       font-weight:600;margin-bottom:24px;width:fit-content;}
+/* ── STEP CIRCLES ── */
+.snum{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;}
+/* ── SCROLL REVEAL ── */
+.rev{opacity:0;transform:translateY(22px);transition:all .5s ease;}
+.rev.in{opacity:1;transform:translateY(0);}
+/* ── FORM ── */
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:12px;font-weight:700;color:var(--tb);letter-spacing:.3px;}
+.form-group input,.form-group select,.form-group textarea{
+  background:#fff;border:1.5px solid #E0D0C0;border-radius:10px;
+  padding:12px 16px;font-size:14px;font-family:inherit;color:var(--td);
+  outline:none;transition:.3s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--am);box-shadow:0 0 0 3px rgba(193,123,0,.12);}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .g4{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav{padding:0 4%;}.nli,.na{display:none;}.hm{display:block;}
+  .sec{padding:52px 4%;}.h2{font-size:26px;}
+  .g2,.g3,.g4,.g6{grid-template-columns:1fr;}
+  footer{padding:40px 4% 28px;}.fg{grid-template-columns:1fr 1fr;gap:24px;}
+  .tbar{padding:13px 4%;}
+  .hero-band{padding:60px 4%;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nl" href="index.html">
+    <span class="av">AVANT</span><span class="gr2">GROUPS</span>
+    <span class="dot"></span><span class="ur">market.avantgroups.in</span>
+  </a>
+  <ul class="nli"><li><a href="index.html">Home</a></li><li><a href="how-it-works.html" class="act">How It Works</a></li><li><a href="services.html">Services</a></li><li><a href="get-quote.html">Get a Quote</a></li><li><a href="factories.html">For Factories</a></li><li><a href="avantdrops.html">AvantDrops</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="na">
+    <button class="bwa" onclick="window.open('https://wa.me/919800000000','_blank')">📱 WhatsApp</button>
+    <button class="bq" onclick="location.href='get-quote.html'">Get a Quote →</button>
+  </div>
+  <button class="hm" onclick="tm()">☰</button>
+</nav>
+<div class="mm" id="mob">
+  <a href="index.html">Home</a><a href="how-it-works.html">How It Works</a>
+  <a href="services.html">Services</a><a href="get-quote.html">Get a Quote</a>
+  <a href="factories.html">For Factories</a><a href="avantdrops.html">AvantDrops</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="hero-band">
+  <div class="badge">📦 End-to-End Order Pipeline</div>
+  <h1 style="font-size:44px;font-weight:900;margin-top:8px;">From your brief to your door.<br><span style="color:var(--go);">6 steps. Fully owner-managed.</span></h1>
+  <p style="font-size:16px;color:rgba(255,255,255,.75);margin-top:16px;max-width:580px;line-height:1.6;">No factory visits. No compliance headaches. One WhatsApp message starts the whole process — and AvantGroups handles the rest.</p>
+</div>
+
+<!-- STEPS DETAILED -->
+<section class="sec" style="background:var(--cv);">
+  <div class="ey"><div class="el"></div><span class="et">The 6-Step Pipeline</span></div>
+  <h2 class="h2">Every order follows the exact same path.</h2>
+  <p class="sub">No shortcuts, no surprises — predictable execution every time.</p>
+  <div style="margin-top:48px;display:flex;flex-direction:column;gap:0;">
+<div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#C17B00;">1</div>
+        <div style='width:2px;flex:1;background:#C17B00;opacity:.25;margin-top:6px;'></div>
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #C17B00;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 1 — Send Your Brief</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">WhatsApp / Website Form</div>
+          </div>
+          
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Buyer shares product type, quantity, specs, deadline, and budget. No minimum interaction cost. 98% of Indian B2B buyers prefer WhatsApp. AvantGroups responds within 2 hours on business days.</div>
+      </div>
+    </div><div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#1B6B3A;">2</div>
+        <div style='width:2px;flex:1;background:#1B6B3A;opacity:.25;margin-top:6px;'></div>
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #1B6B3A;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 2 — Quote Issued in 24 Hours</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">Airtable + PDF Quote System</div>
+          </div>
+          <span class="tag-g" style="font-size:10px;">💰 50% Advance Collected</span>
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Pre-built margin model: factory cost + 30–40% AG spread + logistics. Quote PDF generated and shared via WhatsApp. 50% advance invoice attached. No surprise fees, no hidden charges.</div>
+      </div>
+    </div><div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#B84200;">3</div>
+        <div style='width:2px;flex:1;background:#B84200;opacity:.25;margin-top:6px;'></div>
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #B84200;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 3 — Raw Material Sourcing</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">Central Bulk Purchase from Primary Mills</div>
+          </div>
+          
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Buyer's 50% advance funds the fabric or material purchase from tier-1 Indian mills (Surat synthetics, Ludhiana yarns, Rajkot metals). Pooled orders across clients = best volume rates passed to buyer.</div>
+      </div>
+    </div><div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#C17B00;">4</div>
+        <div style='width:2px;flex:1;background:#C17B00;opacity:.25;margin-top:6px;'></div>
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #C17B00;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 4 — Vetted Factory Allocated</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">660+ MSA-Signed Partner Network</div>
+          </div>
+          
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Best-matched MSA-signed partner factory is allocated based on SKU type, idle production capacity, and QC track record. Buyer needs zero factory contact — AvantGroups is the single point of accountability.</div>
+      </div>
+    </div><div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#E09000;">5</div>
+        <div style='width:2px;flex:1;background:#E09000;opacity:.25;margin-top:6px;'></div>
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #E09000;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 5 — In-Line Quality Control</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">Geo-tagged Photos + AQL 2.5 Sampling</div>
+          </div>
+          
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Production milestones tracked via geo-tagged WhatsApp photos at 30% and 90% completion. Final random AQL 2.5 sampling before packing. Any defects = rework at factory cost, not buyer cost.</div>
+      </div>
+    </div><div class="rev" style="display:flex;gap:0;align-items:stretch;margin-bottom:0;">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-right:24px;">
+        <div class="snum" style="background:#1B6B3A;">6</div>
+        
+      </div>
+      <div class="card" style="flex:1;border-left:3px solid #1B6B3A;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:var(--td);">Step 6 — Dispatch & Final Invoice</div>
+            <div style="font-size:11px;color:var(--am);font-style:italic;font-weight:600;margin-top:2px;">Shiprocket / Cargo / International Freight</div>
+          </div>
+          <span class="tag-g" style="font-size:10px;">💰 Balance Collected</span>
+        </div>
+        <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.7;">Order ships under AvantGroups dispatch label. Tracking number shared instantly. Balance (50%) invoice raised on dispatch. Factory paid within 7 business days of buyer acceptance. Dispute window: 48 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASH CONVERSION CYCLE -->
+<section class="sec" style="background:var(--dk);">
+  <div class="ey"><div class="el" style="background:var(--go);"></div><span class="et" style="color:var(--go);">Cash Conversion Cycle</span></div>
+  <h2 class="h2" style="color:#fff;">AvantGroups is always paid <span style="color:var(--go);">before it pays anyone.</span></h2>
+  <p style="color:rgba(255,255,255,.65);font-size:15px;margin-top:10px;max-width:600px;line-height:1.6;">This is the structural advantage — a self-funding negative working capital cycle that requires zero credit line from Day 1.</p>
+  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0;margin-top:48px;background:var(--md);border-radius:16px;padding:32px;overflow-x:auto;">
+<div style="flex:1;min-width:120px;text-align:center;position:relative;">
+      <div style="font-size:22px;font-weight:800;color:#E09000;">Day 0</div>
+      <div style="font-size:11px;font-weight:700;color:#fff;margin-top:6px;">Buyer Pays</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">50% Advance</div>
+      <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.3);">→</div>
+    </div><div style="flex:1;min-width:120px;text-align:center;position:relative;">
+      <div style="font-size:22px;font-weight:800;color:#C17B00;">Day 1</div>
+      <div style="font-size:11px;font-weight:700;color:#fff;margin-top:6px;">Materials</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Purchased</div>
+      <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.3);">→</div>
+    </div><div style="flex:1;min-width:120px;text-align:center;position:relative;">
+      <div style="font-size:22px;font-weight:800;color:#C17B00;">Days 2–18</div>
+      <div style="font-size:11px;font-weight:700;color:#fff;margin-top:6px;">Factory</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Production</div>
+      <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.3);">→</div>
+    </div><div style="flex:1;min-width:120px;text-align:center;position:relative;">
+      <div style="font-size:22px;font-weight:800;color:#1B6B3A;">Day 19</div>
+      <div style="font-size:11px;font-weight:700;color:#fff;margin-top:6px;">Balance</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Collected</div>
+      <div style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:20px;color:rgba(255,255,255,.3);">→</div>
+    </div><div style="flex:1;min-width:120px;text-align:center;position:relative;">
+      <div style="font-size:22px;font-weight:800;color:#E09000;">Day 24</div>
+      <div style="font-size:11px;font-weight:700;color:#fff;margin-top:6px;">Factory</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;">Paid</div>
+      
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,.08);border-radius:12px;padding:20px 24px;margin-top:24px;border-left:4px solid var(--go);">
+    <strong style="color:var(--go);">Net result:</strong><span style="color:rgba(255,255,255,.8);font-size:14px;"> AvantGroups collects full payment by Day 19. Factory is paid Day 24. 5-day float with zero lending needed. Every order self-finances the next.</span>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="sec" style="background:var(--cv);">
+  <div class="ey"><div class="el"></div><span class="et">Operating Tech Stack</span></div>
+  <h2 class="h2">₹15,000/month runs the entire operation.</h2>
+  <p class="sub">No custom engineering. No proprietary software. 100% off-the-shelf tools — best-in-class at each layer.</p>
+  <div class="g3" style="margin-top:40px;">
+<div class="card rev" style="border-top:3px solid #25D366;">
+      <div style="font-size:11px;font-weight:700;color:#25D366;text-transform:uppercase;letter-spacing:1px;">Buyer Communication</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">WhatsApp Business API</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">Free tier</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">Primary buyer inquiry, quote delivery, milestone updates, and delivery tracking. 98% of Indian B2B buyers prefer WhatsApp for business queries.</div>
+    </div><div class="card rev" style="border-top:3px solid #C17B00;">
+      <div style="font-size:11px;font-weight:700;color:#C17B00;text-transform:uppercase;letter-spacing:1px;">Order Management</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">Airtable</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">₹1,500/month</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">Central database tracking every order — buyer details, SKU specs, factory allocation, milestone dates, invoice status. Shareable with buyers for visibility.</div>
+    </div><div class="card rev" style="border-top:3px solid #3366FF;">
+      <div style="font-size:11px;font-weight:700;color:#3366FF;text-transform:uppercase;letter-spacing:1px;">Invoicing & GST</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">Razorpay / Zoho Books</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">₹2,000/month</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">GST-compliant invoicing, payment links, advance collection, and balance billing. Auto-reconciliation with bank. Zero manual accounting.</div>
+    </div><div class="card rev" style="border-top:3px solid #4CAF50;">
+      <div style="font-size:11px;font-weight:700;color:#4CAF50;text-transform:uppercase;letter-spacing:1px;">Quality Tracking</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">Google Drive + WhatsApp</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">Free</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">Milestone photo folders per order. Geo-tagged photos shared from factory floor. AQL inspection checklists. Permanent audit trail.</div>
+    </div><div class="card rev" style="border-top:3px solid #E09000;">
+      <div style="font-size:11px;font-weight:700;color:#E09000;text-transform:uppercase;letter-spacing:1px;">Shipping</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">Shiprocket Integration</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">Per-shipment</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">Domestic and international shipping via 17+ courier partners. Automated tracking. International documentation for 135 countries. COD available.</div>
+    </div><div class="card rev" style="border-top:3px solid #B84200;">
+      <div style="font-size:11px;font-weight:700;color:#B84200;text-transform:uppercase;letter-spacing:1px;">Creator Storefronts</div>
+      <div style="font-size:16px;font-weight:800;color:var(--td);margin-top:10px;">Instamojo / Razorpay Pages</div>
+      <div style="font-size:12px;color:var(--am);font-weight:600;margin-top:4px;">Free + 2%</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.6;">Zero-code storefront setup for AvantDrops creators. Custom product pages, payment collection, and automatic order routing to AG backend.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="background:linear-gradient(135deg,#C17B00,#3D1800);text-align:center;">
+  <h2 class="h2" style="color:#fff;">Ready to place your first order?</h2>
+  <p style="color:rgba(255,255,255,.8);font-size:15px;margin-top:10px;">The process takes 15 minutes to start — and 21 days to deliver.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:32px;">
+    <button class="btn-am" style="background:#fff;color:var(--am);" onclick="location.href='get-quote.html'">Get a Free Quote →</button>
+    <button class="btn-wa2" onclick="window.open('https://wa.me/919800000000','_blank')">📱 Start on WhatsApp</button>
+  </div>
+</section>
+
+<div class="tbar">
+  <span class="tlbl">TRUSTED BY</span>
+  <div class="mwrap"><div class="minn"><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span></div></div>
+</div>
+<footer>
+<div class="fg">
+  <div>
+    <div class="fb2"><span class="av">AVANT</span><span class="gr2">GROUPS</span></div>
+    <div class="furl">market.avantgroups.in</div>
+    <div class="ftag">India's Bootstrapped Factory OS</div>
+    <div class="fc2">📱 +91 98XXX XXXXX</div>
+    <div class="fc2">📧 hello@avantgroups.in</div>
+  </div>
+  <div>
+    <div class="fh">Services</div>
+    <ul class="flinks">
+      <li><a href="services.html">Ready-to-Ship Wholesale</a></li>
+      <li><a href="services.html">Custom Manufacturing</a></li>
+      <li><a href="avantdrops.html">AvantDrops Storefronts</a></li>
+      <li><a href="services.html">Corporate Gifting</a></li>
+      <li><a href="services.html">Institutional Uniforms</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Company</div>
+    <ul class="flinks">
+      <li><a href="about.html">About AvantGroups</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="factories.html">Partner Factories</a></li>
+      <li><a href="get-quote.html">Get a Quote</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Trust &amp; Compliance</div>
+    <div class="fti">✅ 100% GST Invoiced</div>
+    <div class="fti">✅ NDA Before Specs Shared</div>
+    <div class="fti">✅ MSA-Signed Factories</div>
+    <div class="fti">✅ 21-Day Delivery SLA</div>
+    <div class="fti">✅ AQL 2.5 Quality Standard</div>
+  </div>
+</div>
+<div class="fbot">
+  <div class="fcop">© 2026 AvantGroups · market.avantgroups.in · All rights reserved</div>
+  <div class="fcop" style="font-style:italic;">Built bootstrapped. Zero VC. Full owner control. 🇮🇳</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').classList.toggle('sc',scrollY>10);
+});
+function tm(){document.getElementById('mob').classList.toggle('op');}
+</script>
+
+<script>
+const revEls=document.querySelectorAll('.rev');
+const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);ro.unobserve(e.target);}});},{threshold:.08});
+revEls.forEach(el=>ro.observe(el));
+
+</script>
+</body>
+</html>

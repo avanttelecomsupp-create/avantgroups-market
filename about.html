@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Us — AvantGroups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:#FFFBF4;color:#1A0F00;}
+:root{
+  --am:#C17B00;--dk:#3D1800;--go:#E09000;--cr:#FFF3E0;
+  --cv:#FFFBF4;--td:#1A0F00;--tb:#4A3820;--tm:#9A8070;
+  --ac:#B84200;--gr:#1B6B3A;--wh:#fff;--ru:#D4A850;--md:#5C2D00;
+}
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:999;background:var(--dk);
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;transition:box-shadow .3s;}
+nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.55);}
+.nl{display:flex;align-items:center;gap:6px;text-decoration:none;}
+.nl .av{font-size:19px;font-weight:800;color:#fff;}
+.nl .gr2{font-size:19px;font-weight:800;color:var(--go);}
+.nl .dot{width:5px;height:5px;background:var(--am);border-radius:50%;margin:0 5px;}
+.nl .ur{font-size:10px;color:var(--tm);font-style:italic;}
+.nli{display:flex;gap:20px;list-style:none;}
+.nli a{color:rgba(255,255,255,.8);font-size:12.5px;text-decoration:none;transition:.2s;}
+.nli a:hover,.nli a.act{color:var(--go);}
+.nli a.act{border-bottom:2px solid var(--go);padding-bottom:1px;}
+.na{display:flex;gap:8px;}
+.bwa{border:1px solid var(--go);color:var(--go);background:transparent;border-radius:50px;
+     padding:7px 15px;font-size:11px;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit;}
+.bwa:hover{background:var(--go);color:var(--dk);}
+.bq{background:var(--am);color:#fff;border:none;border-radius:50px;
+    padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.bq:hover{background:var(--go);}
+.hm{display:none;font-size:22px;color:var(--go);cursor:pointer;background:none;border:none;}
+.mm{display:none;position:fixed;top:64px;left:0;right:0;background:var(--dk);
+    padding:20px 5%;flex-direction:column;gap:12px;z-index:998;
+    border-top:1px solid rgba(255,255,255,.1);}
+.mm a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;
+      padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.mm.op{display:flex;}
+/* ── SHARED LAYOUT ── */
+.sec{padding:80px 5%;}
+.ey{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.el{width:22px;height:3px;background:var(--am);border-radius:2px;}
+.et{font-size:10px;font-weight:700;color:var(--am);letter-spacing:3px;text-transform:uppercase;}
+.h2{font-size:36px;font-weight:800;line-height:1.1;}
+.sub{font-size:15px;color:var(--tm);margin-top:10px;max-width:640px;line-height:1.6;}
+/* ── CARDS ── */
+.card{background:#fff;border-radius:16px;padding:28px;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.11);}
+/* ── BTNS ── */
+.btn-am{background:var(--am);color:#fff;border:none;border-radius:50px;
+        padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-am:hover{background:var(--go);transform:translateY(-2px);}
+.btn-wa2{background:#25D366;color:#fff;border:none;border-radius:50px;
+         padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-wa2:hover{opacity:.9;}
+.btn-out{border:2px solid var(--am);color:var(--am);background:transparent;border-radius:50px;
+         padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-out:hover{background:var(--am);color:#fff;}
+/* ── TRUST BAR ── */
+.tbar{background:var(--dk);padding:15px 5%;display:flex;align-items:center;gap:24px;overflow:hidden;}
+.tlbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--tm);flex-shrink:0;white-space:nowrap;}
+.mwrap{overflow:hidden;flex:1;}
+.minn{display:flex;gap:10px;animation:mq 22s linear infinite;width:max-content;}
+.mwrap:hover .minn{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cpill{background:var(--md);border:1px solid var(--am);color:#fff;
+       border-radius:50px;padding:5px 16px;font-size:11px;white-space:nowrap;}
+/* ── FOOTER ── */
+footer{background:var(--dk);padding:56px 5% 36px;}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px;}
+.fb2{font-size:20px;font-weight:800;}
+.fb2 .av{color:#fff;}.fb2 .gr2{color:var(--go);}
+.furl{color:var(--go);font-style:italic;font-size:11px;margin-top:4px;}
+.ftag{color:rgba(255,255,255,.5);font-size:12px;margin-top:10px;}
+.fc2{color:rgba(255,255,255,.4);font-size:11px;margin-top:7px;}
+.fh{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.35);
+    text-transform:uppercase;margin-bottom:12px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.flinks a{color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s;}
+.flinks a:hover{color:var(--go);}
+.fti{color:rgba(255,255,255,.6);font-size:12px;margin-bottom:7px;}
+.fbot{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:22px;
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.fcop{color:rgba(255,255,255,.3);font-size:11px;}
+/* ── PAGE HERO BANDS ── */
+.hero-band{background:linear-gradient(135deg,var(--dk),var(--md));
+           padding:80px 5%;color:#fff;position:relative;overflow:hidden;}
+.hero-band::after{content:'AG';position:absolute;font-size:280px;font-weight:900;
+                  color:rgba(255,255,255,.04);right:-40px;top:-30px;pointer-events:none;
+                  line-height:1;user-select:none;}
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+/* ── TAG ── */
+.tag-g{display:inline-block;background:#E8F5E9;color:var(--gr);border-radius:50px;
+       padding:4px 12px;font-size:10px;font-weight:700;margin-top:10px;}
+.tag-am{display:inline-block;background:var(--cr);color:var(--am);border-radius:50px;
+        padding:4px 12px;font-size:10px;font-weight:700;}
+.badge{display:inline-flex;align-items:center;border:1px solid var(--am);color:var(--am);
+       background:var(--cr);border-radius:50px;padding:5px 13px;font-size:10px;
+       font-weight:600;margin-bottom:24px;width:fit-content;}
+/* ── STEP CIRCLES ── */
+.snum{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;}
+/* ── SCROLL REVEAL ── */
+.rev{opacity:0;transform:translateY(22px);transition:all .5s ease;}
+.rev.in{opacity:1;transform:translateY(0);}
+/* ── FORM ── */
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:12px;font-weight:700;color:var(--tb);letter-spacing:.3px;}
+.form-group input,.form-group select,.form-group textarea{
+  background:#fff;border:1.5px solid #E0D0C0;border-radius:10px;
+  padding:12px 16px;font-size:14px;font-family:inherit;color:var(--td);
+  outline:none;transition:.3s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--am);box-shadow:0 0 0 3px rgba(193,123,0,.12);}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .g4{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav{padding:0 4%;}.nli,.na{display:none;}.hm{display:block;}
+  .sec{padding:52px 4%;}.h2{font-size:26px;}
+  .g2,.g3,.g4,.g6{grid-template-columns:1fr;}
+  footer{padding:40px 4% 28px;}.fg{grid-template-columns:1fr 1fr;gap:24px;}
+  .tbar{padding:13px 4%;}
+  .hero-band{padding:60px 4%;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nl" href="index.html">
+    <span class="av">AVANT</span><span class="gr2">GROUPS</span>
+    <span class="dot"></span><span class="ur">market.avantgroups.in</span>
+  </a>
+  <ul class="nli"><li><a href="index.html">Home</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="services.html">Services</a></li><li><a href="get-quote.html">Get a Quote</a></li><li><a href="factories.html">For Factories</a></li><li><a href="avantdrops.html">AvantDrops</a></li><li><a href="about.html" class="act">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="na">
+    <button class="bwa" onclick="window.open('https://wa.me/919800000000','_blank')">📱 WhatsApp</button>
+    <button class="bq" onclick="location.href='get-quote.html'">Get a Quote →</button>
+  </div>
+  <button class="hm" onclick="tm()">☰</button>
+</nav>
+<div class="mm" id="mob">
+  <a href="index.html">Home</a><a href="how-it-works.html">How It Works</a>
+  <a href="services.html">Services</a><a href="get-quote.html">Get a Quote</a>
+  <a href="factories.html">For Factories</a><a href="avantdrops.html">AvantDrops</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="hero-band">
+  <div class="badge">🏢 About AvantGroups</div>
+  <h1 style="font-size:44px;font-weight:900;margin-top:8px;">Built bootstrapped.<br><span style="color:var(--go);">Zero VC. Full owner control.</span></h1>
+  <p style="font-size:16px;color:rgba(255,255,255,.75);margin-top:16px;max-width:580px;line-height:1.6;">India's first self-funding Manufacturing-as-a-Service platform — connecting buyers and 63M idle Indian MSMEs, with no external capital, no debt, and no dilution.</p>
+</div>
+
+<!-- MISSION -->
+<section class="sec" style="background:var(--cv);">
+  <div class="g2" style="gap:60px;align-items:center;">
+    <div>
+      <div class="ey"><div class="el"></div><span class="et">The Mission</span></div>
+      <h2 class="h2" style="margin-bottom:20px;">Make Indian manufacturing <span style="color:var(--am);">accessible to everyone.</span></h2>
+      <p style="font-size:15px;color:var(--tb);line-height:1.75;margin-bottom:16px;">India has 63 million MSMEs operating at 50–70% idle capacity. Globally, buyers want India-made goods but can't navigate the fragmented, compliance-heavy supplier landscape.</p>
+      <p style="font-size:15px;color:var(--tb);line-height:1.75;margin-bottom:16px;">AvantGroups is the intelligent middleware — the trusted face to buyers, and the reliable demand source to factories.</p>
+      <p style="font-size:15px;color:var(--tb);line-height:1.75;"><strong style="color:var(--td);">The result:</strong> Buyers get enterprise-grade quality with SME prices. Factories get steady export-quality orders without a sales team. The platform earns 25–45% gross margin on every order without owning a single machine.</p>
+    </div>
+    <div>
+      <div style="background:var(--dark);border-radius:20px;padding:36px;">
+        <div style="font-size:11px;font-weight:700;color:var(--go);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">Platform Stats</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Partner Factories</div>
+      <div style="font-size:22px;font-weight:800;color:#E09000;">660+</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Product Categories</div>
+      <div style="font-size:22px;font-weight:800;color:#E09000;">93+</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Countries Served</div>
+      <div style="font-size:22px;font-weight:800;color:#E09000;">135</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Gross Margin Range</div>
+      <div style="font-size:22px;font-weight:800;color:#1B6B3A;">25–45%</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Break-Even Timeline</div>
+      <div style="font-size:22px;font-weight:800;color:#C17B00;">Month 2</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">Startup Budget</div>
+      <div style="font-size:22px;font-weight:800;color:#1B6B3A;">₹1.8–2.2L</div>
+    </div><div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);">External Capital</div>
+      <div style="font-size:22px;font-weight:800;color:#1B6B3A;">₹0</div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="sec" style="background:var(--dk);">
+  <div class="ey"><div class="el" style="background:var(--go);"></div><span class="et" style="color:var(--go);">The Origin Story</span></div>
+  <h2 class="h2" style="color:#fff;">Why AvantGroups was built the way it was.</h2>
+  <div class="g2" style="gap:32px;margin-top:40px;">
+    <div class="card rev" style="background:var(--md);border-left:4px solid var(--am);">
+      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px;">🔍 The Problem We Saw</div>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;">Every platform in the MaaS space — Zetwerk, ZYOD, Fashinza, Groyyo — built something genuinely great. But every one of them spent crores on capex, hired 100+ people, and took VC money to get there.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;margin-top:12px;">We asked: what if you cherry-picked ONLY the operating insight from each — and skipped every capex trap?</p>
+    </div>
+    <div class="card rev" style="background:var(--md);border-left:4px solid var(--go);">
+      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px;">💡 The Insight</div>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;">Factori's 3-pillar model. Zetwerk's accountability layer. ZYOD's speed promise. Fashinza's compliance trust signal. Pietra's creator economy angle. Xometry's self-serve quote flow.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;margin-top:12px;">AvantGroups combines all six operating insights. Skips every capex mistake. Same market access, same margins, zero debt, zero dilution, full owner control.</p>
+    </div>
+    <div class="card rev" style="background:var(--md);border-left:4px solid var(--ac);">
+      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px;">⚙️ The Operating Model</div>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;">Zero inventory. Zero factory lease. Zero machines owned. Revenue collected from buyers BEFORE paying suppliers — creating a structurally negative working capital cycle from the very first order.</p>
+    </div>
+    <div class="card rev" style="background:var(--md);border-left:4px solid var(--gr);">
+      <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:14px;">📈 Year 1 Projection</div>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;">₹80L+ platform GMV. ₹28L+ owner income. Break-even by Month 2. Total startup budget: ₹1.8–2.2L. No external funding required. Fully self-financed from Order 1.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BELIEVE -->
+<section class="sec" style="background:var(--cv);">
+  <h2 class="h2" style="text-align:center;">What AvantGroups stands for</h2>
+  <div class="g3" style="margin-top:40px;">
+<div class="card rev" style="text-align:center;border-top:3px solid #C17B00;">
+      <div style="font-size:40px;">🏭</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">MSME-First</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">India's 63M MSMEs are the real engine of manufacturing. We exist to give them scale and demand they couldn't reach alone.</div>
+    </div><div class="card rev" style="text-align:center;border-top:3px solid #1B6B3A;">
+      <div style="font-size:40px;">📋</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">Compliance as Trust</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">GST invoices, NDA before specs, AQL quality standards, MSA-signed factories — compliance is our sales pitch, not a burden.</div>
+    </div><div class="card rev" style="text-align:center;border-top:3px solid #E09000;">
+      <div style="font-size:40px;">💰</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">Owner-Return Maximisation</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">Every business decision is evaluated on: does this increase owner income without requiring more capital? That's the filter.</div>
+    </div><div class="card rev" style="text-align:center;border-top:3px solid #B84200;">
+      <div style="font-size:40px;">⚡</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">Speed is the Product</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">21-day SLA isn't a nice-to-have — it's the reason buyers pay a premium. Speed = less price negotiation.</div>
+    </div><div class="card rev" style="text-align:center;border-top:3px solid #C17B00;">
+      <div style="font-size:40px;">🌍</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">India on the World Map</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">135 countries. India-made goods, enterprise-grade compliance. We're putting India's MSME quality in front of global buyers.</div>
+    </div><div class="card rev" style="text-align:center;border-top:3px solid #1B6B3A;">
+      <div style="font-size:40px;">🚀</div>
+      <div style="font-size:15px;font-weight:800;margin-top:16px;">Bootstrapped by Design</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:8px;line-height:1.65;">Zero VC. Zero debt. Zero dilution. The model self-funds from Order 1. This is a choice, not a constraint.</div>
+    </div>
+  </div>
+</section>
+
+<div class="tbar">
+  <span class="tlbl">TRUSTED BY</span>
+  <div class="mwrap"><div class="minn"><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span></div></div>
+</div>
+<footer>
+<div class="fg">
+  <div>
+    <div class="fb2"><span class="av">AVANT</span><span class="gr2">GROUPS</span></div>
+    <div class="furl">market.avantgroups.in</div>
+    <div class="ftag">India's Bootstrapped Factory OS</div>
+    <div class="fc2">📱 +91 98XXX XXXXX</div>
+    <div class="fc2">📧 hello@avantgroups.in</div>
+  </div>
+  <div>
+    <div class="fh">Services</div>
+    <ul class="flinks">
+      <li><a href="services.html">Ready-to-Ship Wholesale</a></li>
+      <li><a href="services.html">Custom Manufacturing</a></li>
+      <li><a href="avantdrops.html">AvantDrops Storefronts</a></li>
+      <li><a href="services.html">Corporate Gifting</a></li>
+      <li><a href="services.html">Institutional Uniforms</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Company</div>
+    <ul class="flinks">
+      <li><a href="about.html">About AvantGroups</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="factories.html">Partner Factories</a></li>
+      <li><a href="get-quote.html">Get a Quote</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Trust &amp; Compliance</div>
+    <div class="fti">✅ 100% GST Invoiced</div>
+    <div class="fti">✅ NDA Before Specs Shared</div>
+    <div class="fti">✅ MSA-Signed Factories</div>
+    <div class="fti">✅ 21-Day Delivery SLA</div>
+    <div class="fti">✅ AQL 2.5 Quality Standard</div>
+  </div>
+</div>
+<div class="fbot">
+  <div class="fcop">© 2026 AvantGroups · market.avantgroups.in · All rights reserved</div>
+  <div class="fcop" style="font-style:italic;">Built bootstrapped. Zero VC. Full owner control. 🇮🇳</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').classList.toggle('sc',scrollY>10);
+});
+function tm(){document.getElementById('mob').classList.toggle('op');}
+</script>
+
+<script>
+const revEls=document.querySelectorAll('.rev');
+const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);ro.unobserve(e.target);}});},{threshold:.08});
+revEls.forEach(el=>ro.observe(el));
+
+</script>
+</body>
+</html>

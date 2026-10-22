@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AvantDrops — AvantGroups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;background:#FFFBF4;color:#1A0F00;}
+:root{
+  --am:#C17B00;--dk:#3D1800;--go:#E09000;--cr:#FFF3E0;
+  --cv:#FFFBF4;--td:#1A0F00;--tb:#4A3820;--tm:#9A8070;
+  --ac:#B84200;--gr:#1B6B3A;--wh:#fff;--ru:#D4A850;--md:#5C2D00;
+}
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:999;background:var(--dk);
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;transition:box-shadow .3s;}
+nav.sc{box-shadow:0 4px 24px rgba(0,0,0,.55);}
+.nl{display:flex;align-items:center;gap:6px;text-decoration:none;}
+.nl .av{font-size:19px;font-weight:800;color:#fff;}
+.nl .gr2{font-size:19px;font-weight:800;color:var(--go);}
+.nl .dot{width:5px;height:5px;background:var(--am);border-radius:50%;margin:0 5px;}
+.nl .ur{font-size:10px;color:var(--tm);font-style:italic;}
+.nli{display:flex;gap:20px;list-style:none;}
+.nli a{color:rgba(255,255,255,.8);font-size:12.5px;text-decoration:none;transition:.2s;}
+.nli a:hover,.nli a.act{color:var(--go);}
+.nli a.act{border-bottom:2px solid var(--go);padding-bottom:1px;}
+.na{display:flex;gap:8px;}
+.bwa{border:1px solid var(--go);color:var(--go);background:transparent;border-radius:50px;
+     padding:7px 15px;font-size:11px;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit;}
+.bwa:hover{background:var(--go);color:var(--dk);}
+.bq{background:var(--am);color:#fff;border:none;border-radius:50px;
+    padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.bq:hover{background:var(--go);}
+.hm{display:none;font-size:22px;color:var(--go);cursor:pointer;background:none;border:none;}
+.mm{display:none;position:fixed;top:64px;left:0;right:0;background:var(--dk);
+    padding:20px 5%;flex-direction:column;gap:12px;z-index:998;
+    border-top:1px solid rgba(255,255,255,.1);}
+.mm a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;
+      padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.mm.op{display:flex;}
+/* ── SHARED LAYOUT ── */
+.sec{padding:80px 5%;}
+.ey{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.el{width:22px;height:3px;background:var(--am);border-radius:2px;}
+.et{font-size:10px;font-weight:700;color:var(--am);letter-spacing:3px;text-transform:uppercase;}
+.h2{font-size:36px;font-weight:800;line-height:1.1;}
+.sub{font-size:15px;color:var(--tm);margin-top:10px;max-width:640px;line-height:1.6;}
+/* ── CARDS ── */
+.card{background:#fff;border-radius:16px;padding:28px;
+      box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.11);}
+/* ── BTNS ── */
+.btn-am{background:var(--am);color:#fff;border:none;border-radius:50px;
+        padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-am:hover{background:var(--go);transform:translateY(-2px);}
+.btn-wa2{background:#25D366;color:#fff;border:none;border-radius:50px;
+         padding:13px 30px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-wa2:hover{opacity:.9;}
+.btn-out{border:2px solid var(--am);color:var(--am);background:transparent;border-radius:50px;
+         padding:11px 28px;font-size:14px;font-weight:700;cursor:pointer;transition:.3s;font-family:inherit;}
+.btn-out:hover{background:var(--am);color:#fff;}
+/* ── TRUST BAR ── */
+.tbar{background:var(--dk);padding:15px 5%;display:flex;align-items:center;gap:24px;overflow:hidden;}
+.tlbl{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--tm);flex-shrink:0;white-space:nowrap;}
+.mwrap{overflow:hidden;flex:1;}
+.minn{display:flex;gap:10px;animation:mq 22s linear infinite;width:max-content;}
+.mwrap:hover .minn{animation-play-state:paused;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cpill{background:var(--md);border:1px solid var(--am);color:#fff;
+       border-radius:50px;padding:5px 16px;font-size:11px;white-space:nowrap;}
+/* ── FOOTER ── */
+footer{background:var(--dk);padding:56px 5% 36px;}
+.fg{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:36px;}
+.fb2{font-size:20px;font-weight:800;}
+.fb2 .av{color:#fff;}.fb2 .gr2{color:var(--go);}
+.furl{color:var(--go);font-style:italic;font-size:11px;margin-top:4px;}
+.ftag{color:rgba(255,255,255,.5);font-size:12px;margin-top:10px;}
+.fc2{color:rgba(255,255,255,.4);font-size:11px;margin-top:7px;}
+.fh{font-size:9px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.35);
+    text-transform:uppercase;margin-bottom:12px;}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.flinks a{color:rgba(255,255,255,.6);font-size:12px;text-decoration:none;transition:.2s;}
+.flinks a:hover{color:var(--go);}
+.fti{color:rgba(255,255,255,.6);font-size:12px;margin-bottom:7px;}
+.fbot{border-top:1px solid rgba(255,255,255,.08);margin-top:44px;padding-top:22px;
+      display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.fcop{color:rgba(255,255,255,.3);font-size:11px;}
+/* ── PAGE HERO BANDS ── */
+.hero-band{background:linear-gradient(135deg,var(--dk),var(--md));
+           padding:80px 5%;color:#fff;position:relative;overflow:hidden;}
+.hero-band::after{content:'AG';position:absolute;font-size:280px;font-weight:900;
+                  color:rgba(255,255,255,.04);right:-40px;top:-30px;pointer-events:none;
+                  line-height:1;user-select:none;}
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.g6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+/* ── TAG ── */
+.tag-g{display:inline-block;background:#E8F5E9;color:var(--gr);border-radius:50px;
+       padding:4px 12px;font-size:10px;font-weight:700;margin-top:10px;}
+.tag-am{display:inline-block;background:var(--cr);color:var(--am);border-radius:50px;
+        padding:4px 12px;font-size:10px;font-weight:700;}
+.badge{display:inline-flex;align-items:center;border:1px solid var(--am);color:var(--am);
+       background:var(--cr);border-radius:50px;padding:5px 13px;font-size:10px;
+       font-weight:600;margin-bottom:24px;width:fit-content;}
+/* ── STEP CIRCLES ── */
+.snum{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;}
+/* ── SCROLL REVEAL ── */
+.rev{opacity:0;transform:translateY(22px);transition:all .5s ease;}
+.rev.in{opacity:1;transform:translateY(0);}
+/* ── FORM ── */
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:12px;font-weight:700;color:var(--tb);letter-spacing:.3px;}
+.form-group input,.form-group select,.form-group textarea{
+  background:#fff;border:1.5px solid #E0D0C0;border-radius:10px;
+  padding:12px 16px;font-size:14px;font-family:inherit;color:var(--td);
+  outline:none;transition:.3s;width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--am);box-shadow:0 0 0 3px rgba(193,123,0,.12);}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .g4{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  nav{padding:0 4%;}.nli,.na{display:none;}.hm{display:block;}
+  .sec{padding:52px 4%;}.h2{font-size:26px;}
+  .g2,.g3,.g4,.g6{grid-template-columns:1fr;}
+  footer{padding:40px 4% 28px;}.fg{grid-template-columns:1fr 1fr;gap:24px;}
+  .tbar{padding:13px 4%;}
+  .hero-band{padding:60px 4%;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nl" href="index.html">
+    <span class="av">AVANT</span><span class="gr2">GROUPS</span>
+    <span class="dot"></span><span class="ur">market.avantgroups.in</span>
+  </a>
+  <ul class="nli"><li><a href="index.html">Home</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="services.html">Services</a></li><li><a href="get-quote.html">Get a Quote</a></li><li><a href="factories.html">For Factories</a></li><li><a href="avantdrops.html" class="act">AvantDrops</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul>
+  <div class="na">
+    <button class="bwa" onclick="window.open('https://wa.me/919800000000','_blank')">📱 WhatsApp</button>
+    <button class="bq" onclick="location.href='get-quote.html'">Get a Quote →</button>
+  </div>
+  <button class="hm" onclick="tm()">☰</button>
+</nav>
+<div class="mm" id="mob">
+  <a href="index.html">Home</a><a href="how-it-works.html">How It Works</a>
+  <a href="services.html">Services</a><a href="get-quote.html">Get a Quote</a>
+  <a href="factories.html">For Factories</a><a href="avantdrops.html">AvantDrops</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="hero-band">
+  <div class="badge">🎨 AvantDrops — Creator Storefronts</div>
+  <h1 style="font-size:44px;font-weight:900;margin-top:8px;">Launch your merch brand<br><span style="color:var(--go);">in 15 minutes. Zero inventory.</span></h1>
+  <p style="font-size:16px;color:rgba(255,255,255,.75);margin-top:16px;max-width:580px;line-height:1.6;">AvantDrops is AvantGroups' creator economy arm. You focus on content. We handle production, fulfillment, and delivery — completely invisible to your audience.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+    <button class="btn-am" style="background:var(--go);color:var(--dk);" onclick="document.getElementById('launch').scrollIntoView({behavior:'smooth'})">Launch My Store →</button>
+    <button class="btn-wa2" onclick="window.open('https://wa.me/919800000000','_blank')">📱 Ask on WhatsApp</button>
+  </div>
+</div>
+
+<!-- HOW IT WORKS FOR CREATORS -->
+<section class="sec" style="background:var(--cv);">
+  <div class="ey"><div class="el"></div><span class="et">How AvantDrops Works</span></div>
+  <h2 class="h2">3 steps. No inventory. No risk. Just earnings.</h2>
+  <div class="g3" style="margin-top:40px;">
+    <div class="card rev" style="border-top:4px solid var(--go);text-align:center;padding:36px 28px;">
+      <div style="font-size:48px;margin-bottom:16px;">🎨</div>
+      <div class="snum" style="background:var(--go);color:var(--dk);margin:0 auto 16px;font-size:20px;">1</div>
+      <div style="font-size:16px;font-weight:800;">You Design the Products</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.65;">Share your artwork, logo, or brand identity with us. We map it to 50+ catalog products — tees, hoodies, tote bags, mugs, phone cases, and more.</div>
+    </div>
+    <div class="card rev" style="border-top:4px solid var(--am);text-align:center;padding:36px 28px;">
+      <div style="font-size:48px;margin-bottom:16px;">🏪</div>
+      <div class="snum" style="background:var(--am);margin:0 auto 16px;font-size:20px;">2</div>
+      <div style="font-size:16px;font-weight:800;">We Build Your Storefront</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.65;">Your branded storefront goes live on market.avantgroups.in/yourname — or as a custom link you share with your audience. No coding, no hosting, no domain needed.</div>
+    </div>
+    <div class="card rev" style="border-top:4px solid var(--gr);text-align:center;padding:36px 28px;">
+      <div style="font-size:48px;margin-bottom:16px;">💰</div>
+      <div class="snum" style="background:var(--gr);margin:0 auto 16px;font-size:20px;">3</div>
+      <div style="font-size:16px;font-weight:800;">You Earn. We Fulfil.</div>
+      <div style="font-size:13px;color:var(--tb);margin-top:10px;line-height:1.65;">Fans order → we produce and ship → you collect your margin every week via UPI. Zero inventory risk. Zero shipping headaches. 100% passive income layer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS CALCULATOR -->
+<section class="sec" style="background:var(--dk);">
+  <div class="ey"><div class="el" style="background:var(--go);"></div><span class="et" style="color:var(--go);">Earnings Calculator</span></div>
+  <h2 class="h2" style="color:#fff;">See what you could earn monthly.</h2>
+  <div class="g2" style="gap:48px;margin-top:40px;align-items:start;">
+    <div>
+      <div style="margin-bottom:24px;">
+        <label style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:10px;">Your Average Monthly Orders</label>
+        <input id="ordSlider" type="range" min="10" max="500" value="50" style="width:100%;accent-color:var(--go);" oninput="calcEarns()">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;"><span>10</span><span>500</span></div>
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:10px;">Average Selling Price per Item (₹)</label>
+        <input id="priceSlider" type="range" min="200" max="2000" step="50" value="600" style="width:100%;accent-color:var(--am);" oninput="calcEarns()">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;"><span>₹200</span><span>₹2,000</span></div>
+      </div>
+      <div>
+        <label style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;display:block;margin-bottom:10px;">Your Margin %</label>
+        <input id="marginSlider" type="range" min="15" max="28" value="22" style="width:100%;accent-color:var(--ac);" oninput="calcEarns()">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.4);margin-top:4px;"><span>15%</span><span>28%</span></div>
+      </div>
+    </div>
+    <div style="background:var(--md);border-radius:20px;padding:36px;border:2px solid var(--go);">
+      <div style="font-size:12px;font-weight:700;color:var(--go);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px;">Your Estimated Earnings</div>
+      <div style="margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+        <div style="font-size:13px;color:rgba(255,255,255,.6);">Monthly Orders</div>
+        <div id="resOrders" style="font-size:28px;font-weight:800;color:#fff;">50 orders</div>
+      </div>
+      <div style="margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:16px;">
+        <div style="font-size:13px;color:rgba(255,255,255,.6);">Gross Monthly Revenue</div>
+        <div id="resRevenue" style="font-size:28px;font-weight:800;color:var(--go);">₹30,000</div>
+      </div>
+      <div style="margin-bottom:24px;">
+        <div style="font-size:13px;color:rgba(255,255,255,.6);">Your Net Earnings (after AG margin)</div>
+        <div id="resEarning" style="font-size:36px;font-weight:900;color:var(--go);">₹6,600</div>
+        <div id="resDay" style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px;"></div>
+      </div>
+      <button class="btn-am" style="background:var(--go);color:var(--dk);width:100%;" onclick="document.getElementById('launch').scrollIntoView({behavior:'smooth'})">Start Earning →</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU CAN SELL -->
+<section class="sec" style="background:var(--cv);">
+  <h2 class="h2">50+ products ready for your brand.</h2>
+  <p class="sub" style="margin-bottom:40px;">Every product is manufactured on-demand. Zero inventory needed by you — ever.</p>
+  <div class="g4">
+<div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">👕</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Custom T-Shirts</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹280–₹580/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🧥</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Hoodies & Sweatshirts</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹480–₹980/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🎒</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Tote Bags</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹120–₹380/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">☕</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Coffee Mugs</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹180–₹420/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">📱</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Phone Cases</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹150–₹320/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">📓</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Notebooks</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹120–₹280/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🧢</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Caps & Hats</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹180–₹450/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🖼️</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Posters & Canvas</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹250–₹900/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🌂</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Umbrellas</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹280–₹650/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🏃</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Joggers & Track Pants</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹380–₹780/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">💜</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Stickers & Patches</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹40–₹120/unit</div>
+    </div><div class="card rev" style="text-align:center;">
+      <div style="font-size:36px;">🎁</div>
+      <div style="font-size:13px;font-weight:700;color:var(--td);margin-top:10px;">Custom Gift Boxes</div>
+      <div style="font-size:11px;color:var(--tm);margin-top:5px;">₹350–₹1,200/unit</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAUNCH FORM -->
+<section class="sec" style="background:var(--dk);" id="launch">
+  <div class="ey"><div class="el" style="background:var(--go);"></div><span class="et" style="color:var(--go);">Launch Your Storefront</span></div>
+  <h2 class="h2" style="color:#fff;">Start in 15 minutes. First order in 48 hours.</h2>
+  <div class="g2" style="gap:40px;margin-top:40px;align-items:start;">
+    <div style="background:var(--md);border-radius:20px;padding:36px;">
+      <div class="form-group"><label style="color:rgba(255,255,255,.7);">Your Name / Creator Handle *</label><input type="text" placeholder="e.g. @fashionbyriya or Riya Sharma"></div>
+      <div class="form-group"><label style="color:rgba(255,255,255,.7);">Instagram / YouTube Profile Link *</label><input type="text" placeholder="https://instagram.com/yourhandle"></div>
+      <div class="form-group"><label style="color:rgba(255,255,255,.7);">WhatsApp Number *</label><input type="tel" placeholder="+91 98XXX XXXXX"></div>
+      <div class="form-group"><label style="color:rgba(255,255,255,.7);">Your Brand / Store Name</label><input type="text" placeholder="e.g. Riya's Merch"></div>
+      <div class="form-group"><label style="color:rgba(255,255,255,.7);">What products do you want to sell?</label>
+        <textarea rows="2" placeholder="e.g. Custom tees and tote bags with my logo/artwork"></textarea>
+      </div>
+      <button class="btn-am" style="background:var(--go);color:var(--dk);width:100%;padding:15px;font-size:15px;" onclick="alert('Storefront request received! Our team will set up your store and share the link within 24 hours. 🎉')">🚀 Launch My AvantDrops Store →</button>
+      <div style="text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin-top:12px;">✅ Free to start &nbsp;·&nbsp; ✅ No inventory &nbsp;·&nbsp; ✅ Weekly earnings via UPI</div>
+    </div>
+    <div>
+      <div class="card" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:700;color:var(--go);margin-bottom:12px;">Who is AvantDrops for?</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:rgba(255,255,255,.7);">
+          <div>📸 Instagram creators with 1K+ followers</div>
+          <div>🎥 YouTube creators and podcasters</div>
+          <div>🏃 Fitness coaches and wellness influencers</div>
+          <div>🎨 Artists and illustrators</div>
+          <div>🚀 Solopreneurs launching a product brand</div>
+          <div>🎓 College clubs and sports teams</div>
+        </div>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);">
+        <div style="font-size:13px;font-weight:700;color:var(--go);margin-bottom:12px;">Real creator earnings</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.7);font-style:italic;line-height:1.65;">"I launched my AvantDrops store with 3 products. In month 1 I got 47 orders from my audience and earned ₹28,000 — while making zero upfront investment."</div>
+        <div style="font-size:12px;font-weight:700;color:#fff;margin-top:12px;">@fashionbyriya</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.4);">85K Instagram · ₹28,000 Month 1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tbar">
+  <span class="tlbl">TRUSTED BY</span>
+  <div class="mwrap"><div class="minn"><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span><span class="cpill">Decathlon</span><span class="cpill">Samsung India</span><span class="cpill">Indian Navy</span><span class="cpill">Delhi Police</span><span class="cpill">ISRO</span><span class="cpill">Jio</span><span class="cpill">Dalmia Cement</span><span class="cpill">HPCL</span><span class="cpill">Finolex Pipes</span><span class="cpill">Indian Coast Guard</span></div></div>
+</div>
+<footer>
+<div class="fg">
+  <div>
+    <div class="fb2"><span class="av">AVANT</span><span class="gr2">GROUPS</span></div>
+    <div class="furl">market.avantgroups.in</div>
+    <div class="ftag">India's Bootstrapped Factory OS</div>
+    <div class="fc2">📱 +91 98XXX XXXXX</div>
+    <div class="fc2">📧 hello@avantgroups.in</div>
+  </div>
+  <div>
+    <div class="fh">Services</div>
+    <ul class="flinks">
+      <li><a href="services.html">Ready-to-Ship Wholesale</a></li>
+      <li><a href="services.html">Custom Manufacturing</a></li>
+      <li><a href="avantdrops.html">AvantDrops Storefronts</a></li>
+      <li><a href="services.html">Corporate Gifting</a></li>
+      <li><a href="services.html">Institutional Uniforms</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Company</div>
+    <ul class="flinks">
+      <li><a href="about.html">About AvantGroups</a></li>
+      <li><a href="how-it-works.html">How It Works</a></li>
+      <li><a href="factories.html">Partner Factories</a></li>
+      <li><a href="get-quote.html">Get a Quote</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="fh">Trust &amp; Compliance</div>
+    <div class="fti">✅ 100% GST Invoiced</div>
+    <div class="fti">✅ NDA Before Specs Shared</div>
+    <div class="fti">✅ MSA-Signed Factories</div>
+    <div class="fti">✅ 21-Day Delivery SLA</div>
+    <div class="fti">✅ AQL 2.5 Quality Standard</div>
+  </div>
+</div>
+<div class="fbot">
+  <div class="fcop">© 2026 AvantGroups · market.avantgroups.in · All rights reserved</div>
+  <div class="fcop" style="font-style:italic;">Built bootstrapped. Zero VC. Full owner control. 🇮🇳</div>
+</div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').classList.toggle('sc',scrollY>10);
+});
+function tm(){document.getElementById('mob').classList.toggle('op');}
+</script>
+
+<script>
+const revEls=document.querySelectorAll('.rev');
+const ro=new IntersectionObserver(es=>{es.forEach((e,i)=>{
+  if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);ro.unobserve(e.target);}});},{threshold:.08});
+revEls.forEach(el=>ro.observe(el));
+
+function calcEarns(){
+  const ords=+document.getElementById('ordSlider').value;
+  const price=+document.getElementById('priceSlider').value;
+  const margin=+document.getElementById('marginSlider').value;
+  const rev=ords*price;
+  const earn=Math.round(rev*margin/100);
+  document.getElementById('resOrders').textContent=ords+' orders';
+  document.getElementById('resRevenue').textContent='₹'+rev.toLocaleString('en-IN');
+  document.getElementById('resEarning').textContent='₹'+earn.toLocaleString('en-IN');
+  document.getElementById('resDay').textContent='≈ ₹'+Math.round(earn/30).toLocaleString('en-IN')+' per day';
+}
+calcEarns();
+
+</script>
+</body>
+</html>
