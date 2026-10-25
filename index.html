@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AngaWorld | Online Shopping for Authentic Ethnic Wear, Handloom Silks & Heritage Crafts</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- AMAZON STYLE TOP NAVIGATION BAR -->
+  <header class="amazon-header">
+    <div class="nav-main">
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo-link">
+        <div class="logo-icon-emblem">A</div>
+        <div class="logo-text-group">
+          <div class="logo-title">Anga<span>World</span></div>
+          <div class="logo-tagline">Local roots. Global reach</div>
+        </div>
+      </a>
+
+      <!-- Deliver To Location -->
+      <div class="nav-location">
+        <span style="font-size: 18px;">📍</span>
+        <div>
+          <div class="loc-small">Deliver to</div>
+          <div class="loc-bold">India & Worldwide</div>
+        </div>
+      </div>
+
+      <!-- Amazon Style Search Bar -->
+      <div class="nav-search-bar">
+        <select class="search-category-select" id="searchCategorySelect">
+          <option value="All">All Ethnic</option>
+          <option value="Handloom Sarees">Handloom Sarees</option>
+          <option value="Stoles & Dupattas">Stoles & Dupattas</option>
+          <option value="Home Decor">Home Decor</option>
+          <option value="Ethnic Apparel">Ethnic Apparel</option>
+        </select>
+        <input type="text" class="search-input" id="amazonSearchInput" placeholder="Search Bhagalpuri Tussar Silk, Madhubani Art, Terracotta..." onkeypress="if(event.key==='Enter') executeSearch()" />
+        <button class="search-btn" onclick="executeSearch()" title="Search">
+          🔍
+        </button>
+      </div>
+
+      <!-- Right Navigation Links -->
+      <div class="nav-right-items">
+        <!-- Language / Country -->
+        <div class="nav-item">
+          <div class="nav-small">EN / INR</div>
+          <div class="nav-bold">🇮🇳 ₹ (INR)</div>
+        </div>
+
+        <!-- Returns & Orders -->
+        <div class="nav-item">
+          <div class="nav-small">Returns</div>
+          <div class="nav-bold">& Orders</div>
+        </div>
+
+        <!-- Control Panel Direct Access -->
+        <a href="admin.html" class="nav-item">
+          <div class="nav-small">Merchant</div>
+          <div class="nav-bold">⚙️ Admin Panel</div>
+        </a>
+
+        <!-- Cart with badge -->
+        <a href="cart.html" class="nav-item cart-icon-wrapper">
+          <span style="font-size: 26px;">🛒</span>
+          <div>
+            <span class="cart-badge cartCountDisplay">0</span>
+            <div class="nav-bold">Cart</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sub-Navigation Bar -->
+    <nav class="nav-sub-bar">
+      <a href="javascript:void(0)" class="sub-link" onclick="filterCategory('All')">☰ All</a>
+      <a href="javascript:void(0)" class="sub-link highlight" onclick="filterCategory('Handloom Sarees')">🌟 Grand Silk Festival</a>
+      <a href="javascript:void(0)" class="sub-link" onclick="filterCategory('Handloom Sarees')">Tussar Silk Sarees</a>
+      <a href="javascript:void(0)" class="sub-link" onclick="filterCategory('Stoles & Dupattas')">Madhubani & Manjusha</a>
+      <a href="javascript:void(0)" class="sub-link" onclick="filterCategory('Home Decor')">Terracotta & Dokra</a>
+      <a href="javascript:void(0)" class="sub-link" onclick="filterCategory('Ethnic Apparel')">Artisanal Kurtas</a>
+      <a href="banner-manager.html" class="sub-link">🖼️ Manage Banners</a>
+      <a href="admin.html" class="sub-link" style="margin-left: auto; color: var(--amazon-yellow);">+ Upload New Product</a>
+    </nav>
+  </header>
+
+  <!-- BANNER CAROUSEL SLIDER -->
+  <section class="carousel-container" id="carousel">
+    <div id="carouselSlides">
+      <!-- Injected by store.js -->
+    </div>
+    <button class="carousel-btn prev" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+    <button class="carousel-btn next" onclick="nextSlide()" aria-label="Next Slide">›</button>
+  </section>
+
+  <!-- AMAZON-STYLE 4-CARD WIDGET ROWS -->
+  <section class="widgets-row">
+    <!-- Card 1 -->
+    <div class="widget-card">
+      <h3>Bhagalpuri Pure Tussar | Up to 40% Off</h3>
+      <div class="widget-quad-grid">
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80" alt="Gold Ghicha Saree" />
+          <span>Gold Ghicha</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80" alt="Zari Border Silk" />
+          <span>Zari Temple Weave</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80" alt="Natural Dye" />
+          <span>Natural Dyed</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=400&q=80" alt="Matka Silk" />
+          <span>Matka Silk</span>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="widget-link" onclick="filterCategory('Handloom Sarees')">See all handloom collections</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="widget-card">
+      <h3>Heritage Folk Art & Handpainted Stoles</h3>
+      <div class="widget-quad-grid">
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=400&q=80" alt="Madhubani Kachni" />
+          <span>Madhubani Kachni</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=400&q=80" alt="Manjusha Scrolls" />
+          <span>Manjusha Line Art</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80" alt="Chanderi Stoles" />
+          <span>Chanderi Stoles</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80" alt="Silk Scarves" />
+          <span>Wild Silk Scarves</span>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="widget-link" onclick="filterCategory('Stoles & Dupattas')">Explore folk art collections</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="widget-card">
+      <h3>Handmade Terracotta & Lost-Wax Dokra</h3>
+      <div class="widget-quad-grid">
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=400&q=80" alt="Terracotta Urli" />
+          <span>Floral Urli Bowls</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=400&q=80" alt="Brass Diya" />
+          <span>Temple Brass Diyas</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=400&q=80" alt="Dokra Figures" />
+          <span>Dokra Brass Idols</span>
+        </div>
+        <div class="quad-item">
+          <img src="https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=400&q=80" alt="Pottery Lamps" />
+          <span>Kiln-fired Lamps</span>
+        </div>
+      </div>
+      <a href="javascript:void(0)" class="widget-link" onclick="filterCategory('Home Decor')">Discover ethnic home decor</a>
+    </div>
+
+    <!-- Card 4: Quick Merchant Banner -->
+    <div class="widget-card" style="background: linear-gradient(135deg, #FFF9F5, #FFF);">
+      <h3>Sell on AngaWorld</h3>
+      <p style="font-size: 13px; color: #555; margin-bottom: 14px;">Are you a handloom weaver, terracotta potter, or regional artisan? Reach lakhs of discerning buyers worldwide.</p>
+      <div style="background: #FFF; border: 1px dashed var(--ethnic-terracotta); border-radius: 8px; padding: 16px; text-align: center; margin-bottom: 16px;">
+        <div style="font-size: 28px; margin-bottom: 6px;">🏺 🧵 🎨</div>
+        <strong style="color: var(--ethnic-terracotta);">Zero Listing Fee for Artisans</strong>
+      </div>
+      <a href="admin.html" class="widget-link" style="font-weight: 700; color: var(--ethnic-terracotta);">Go to Merchant Control Panel →</a>
+    </div>
+  </section>
+
+  <!-- INFINITE SCROLL PRODUCT CATALOG -->
+  <main class="catalog-section" id="catalog">
+    <div class="catalog-header">
+      <h2>Explore Authentic Ethnic Craft Collections</h2>
+      <div class="catalog-filter-tags">
+        <button class="filter-btn active" onclick="filterCategory('All')">All Categories</button>
+        <button class="filter-btn" onclick="filterCategory('Handloom Sarees')">Handloom Sarees</button>
+        <button class="filter-btn" onclick="filterCategory('Stoles & Dupattas')">Stoles & Dupattas</button>
+        <button class="filter-btn" onclick="filterCategory('Home Decor')">Home Decor & Pottery</button>
+        <button class="filter-btn" onclick="filterCategory('Ethnic Apparel')">Ethnic Apparel</button>
+      </div>
+    </div>
+
+    <!-- Product Grid for Infinite Scroll -->
+    <div class="product-grid" id="productGrid">
+      <!-- Populated dynamically by store.js -->
+    </div>
+
+    <!-- Infinite Scroll Loading Indicator -->
+    <div class="infinite-loader" id="infiniteLoader">
+      <div class="spinner"></div>
+      <span>Loading more authentic handcrafted treasures from AngaWorld...</span>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="amazon-footer">
+    <div class="footer-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      Back to top
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Get to Know Us</h4>
+          <ul>
+            <li><a href="#">About AngaWorld</a></li>
+            <li><a href="#">The Heritage of Anga</a></li>
+            <li><a href="#">Artisan Empowerment</a></li>
+            <li><a href="#">GI-Tagged Weaves</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect with Artisans</h4>
+          <ul>
+            <li><a href="admin.html">Merchant Control Panel</a></li>
+            <li><a href="#">Sell on AngaWorld</a></li>
+            <li><a href="#">Artisan Guild Registry</a></li>
+            <li><a href="#">Supply Chain Traceability</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>AngaWorld Global Shipping</h4>
+          <ul>
+            <li><a href="#">AngaExpress Global Delivery</a></li>
+            <li><a href="#">Returns & Replacements</a></li>
+            <li><a href="#">100% Handloom Authenticity Guarantee</a></li>
+            <li><a href="#">Help & Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Official Domains</h4>
+          <ul>
+            <li><a href="#">angaworld.in (India Portal)</a></li>
+            <li><a href="#">angaworld.com (Global Hub)</a></li>
+            <li><a href="#">Secure Checkout (256-bit SSL)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
+    </div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script src="store.js"></script>
+</body>
+</html>

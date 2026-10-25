@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AngaWorld Shopping Cart | Amazon-Style Ethnic Marketplace</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="amazon-header">
+    <div class="nav-main">
+      <a href="index.html" class="nav-logo-link">
+        <div class="logo-icon-emblem">A</div>
+        <div class="logo-text-group">
+          <div class="logo-title">Anga<span>World</span></div>
+          <div class="logo-tagline">Local roots. Global reach</div>
+        </div>
+      </a>
+
+      <div class="nav-location">
+        <span style="font-size: 18px;">📍</span>
+        <div>
+          <div class="loc-small">Deliver to</div>
+          <div class="loc-bold">India & Worldwide</div>
+        </div>
+      </div>
+
+      <div class="nav-search-bar">
+        <input type="text" class="search-input" placeholder="Search ethnic handlooms, stoles, crafts..." id="cartSearchInput" />
+        <button class="search-btn" onclick="location.href='index.html'">🔍</button>
+      </div>
+
+      <div class="nav-right-items">
+        <a href="index.html" class="nav-item">
+          <div class="nav-small">Continue</div>
+          <div class="nav-bold">🛍️ Shopping</div>
+        </a>
+        <a href="admin.html" class="nav-item">
+          <div class="nav-small">Merchant</div>
+          <div class="nav-bold">⚙️ Admin Panel</div>
+        </a>
+        <a href="cart.html" class="nav-item cart-icon-wrapper">
+          <span style="font-size: 26px;">🛒</span>
+          <div>
+            <span class="cart-badge cartCountDisplay">0</span>
+            <div class="nav-bold">Cart</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <nav class="nav-sub-bar">
+      <a href="index.html" class="sub-link">← Back to All Ethnic Collections</a>
+      <a href="index.html" class="sub-link">Pure Tussar Sarees</a>
+      <a href="index.html" class="sub-link">Madhubani Folk Art</a>
+      <a href="index.html" class="sub-link">Terracotta Decor</a>
+      <a href="admin.html" class="sub-link" style="margin-left: auto; color: var(--amazon-yellow);">+ Upload Product</a>
+    </nav>
+  </header>
+
+  <!-- Amazon-Style Cart Layout -->
+  <main class="cart-layout">
+    <!-- Left Column: Items List -->
+    <div class="cart-main-box">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #DDD; padding-bottom: 12px; margin-bottom: 16px;">
+        <h1 style="font-size: 24px; font-weight: 700;">Shopping Cart</h1>
+        <span style="font-size: 14px; color: var(--text-secondary);">Price</span>
+      </div>
+
+      <div id="cartItemsContainer">
+        <!-- Rendered by cart.js -->
+      </div>
+
+      <div id="cartSubtotalBottom" style="text-align: right; margin-top: 20px; font-size: 16px;">
+        Subtotal (<span id="bottomItemCount">0</span> items): <strong style="font-size: 18px; color: var(--text-primary);" id="bottomSubtotalPrice">₹0</strong>
+      </div>
+    </div>
+
+    <!-- Right Column: Subtotal Card & Checkout -->
+    <aside class="cart-side-box">
+      <div style="background: #F0F2F2; padding: 12px; border-radius: 6px; font-size: 12px; margin-bottom: 16px; border-left: 4px solid var(--success);">
+        <strong style="color: var(--success);">✓ Your order qualifies for FREE AngaExpress Delivery</strong>
+        <p style="color: #555; margin-top: 4px;">Direct dispatch from verified master artisanal clusters.</p>
+      </div>
+
+      <div style="font-size: 18px; line-height: 1.4;">
+        Subtotal (<span id="sideItemCount">0</span> items):<br>
+        <strong style="font-size: 22px; color: #B12704;" id="sideSubtotalPrice">₹0</strong>
+      </div>
+
+      <div style="margin: 12px 0; font-size: 13px;">
+        <label style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" checked /> This order contains an authentic artisan gift
+        </label>
+      </div>
+
+      <button class="btn-checkout-proceed" onclick="proceedToCheckout()">
+        Proceed to Buy
+      </button>
+
+      <div style="margin-top: 20px; border-top: 1px solid #DDD; padding-top: 16px; font-size: 12px; color: #555;">
+        <p><strong>100% Authentic Handloom Assurance</strong></p>
+        <p style="margin-top: 4px;">Every product features verifiable origin documentation and direct artisan royalties.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="amazon-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
+    </div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

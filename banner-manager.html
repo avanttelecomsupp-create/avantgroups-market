@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AngaWorld Banner & Hero Manager | Amazon-Style Promotional Campaigns</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #F8F9FA;">
+
+  <!-- Header -->
+  <header class="amazon-header">
+    <div class="nav-main">
+      <a href="index.html" class="nav-logo-link">
+        <div class="logo-icon-emblem">A</div>
+        <div class="logo-text-group">
+          <div class="logo-title">Anga<span>World</span></div>
+          <div class="logo-tagline">Promotional Banner Manager</div>
+        </div>
+      </a>
+      <div class="nav-right-items" style="margin-left: auto;">
+        <a href="index.html" class="nav-item">
+          <div class="nav-small">Preview</div>
+          <div class="nav-bold">🛍️ View Storefront</div>
+        </a>
+        <a href="admin.html" class="nav-item">
+          <div class="nav-small">Merchant</div>
+          <div class="nav-bold">⚙️ Admin Panel</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-layout" style="grid-template-columns: 1fr;">
+    <section class="admin-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h1 style="font-size: 22px; font-weight: 700;">🖼️ Hero Banner & Campaign Manager</h1>
+          <p style="color: var(--text-secondary); font-size: 13px; margin-top: 4px;">
+            Manage the top rotating hero banners on the storefront homepage (angaworld.in / angaworld.com).
+          </p>
+        </div>
+        <a href="index.html" class="btn-carousel" style="padding: 10px 20px;">View Live Storefront →</a>
+      </div>
+
+      <!-- Add New Banner Form -->
+      <div style="background: #FFF9F6; border: 1px solid var(--ethnic-terracotta); border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+        <h3 style="font-size: 16px; font-weight: 700; color: var(--ethnic-terracotta); margin-bottom: 12px;">+ Add New Promotional Banner</h3>
+        <form id="bannerForm" onsubmit="handleAddBanner(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Banner Campaign Heading *</label>
+              <input type="text" id="bTitle" required placeholder="e.g. Diya & Terracotta Festive Mela" />
+            </div>
+            <div class="form-group">
+              <label>Target Category *</label>
+              <select id="bCategory" required>
+                <option value="Handloom Sarees">Handloom Sarees</option>
+                <option value="Home Decor">Home Decor</option>
+                <option value="Stoles & Dupattas">Stoles & Dupattas</option>
+                <option value="Ethnic Apparel">Ethnic Apparel</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Campaign Subtitle / Discount Pitch *</label>
+            <input type="text" id="bSubtitle" required placeholder="e.g. Direct from Sultanganj potters. Handcrafted brass diyas up to 35% off." />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>High-Resolution Banner Image URL (1600x600 recommended) *</label>
+              <input type="url" id="bImage" required placeholder="https://images.unsplash.com/..." />
+            </div>
+            <div class="form-group">
+              <label>Button Action Text *</label>
+              <input type="text" id="bLinkText" required placeholder="Shop Festive Collection" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn-checkout-proceed" style="background: var(--amazon-yellow); width: auto; padding: 10px 24px;">
+            Save & Publish Banner
+          </button>
+        </form>
+      </div>
+
+      <!-- Active Banners List -->
+      <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">Active Promotional Banners</h3>
+      <div id="bannersList">
+        <!-- Rendered by banner-manager.js -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="amazon-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
+    </div>
+  </footer>
+
+  <script>
+    const DEFAULT_BANNERS = [
+      {
+        title: "The Grand Anga Handloom Festival",
+        subtitle: "Direct from master weavers of Bhagalpur & eastern craft clusters. Up to 40% off.",
+        image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1600&q=80",
+        linkText: "Explore Pure Silks",
+        category: "Handloom Sarees"
+      },
+      {
+        title: "Sacred Folk Arts & Terracotta Decor",
+        subtitle: "GI-Certified Madhubani paintings, Dokra brass inlays, and festive pottery.",
+        image: "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=1600&q=80",
+        linkText: "Shop Heritage Decor",
+        category: "Home Decor"
+      },
+      {
+        title: "Artisanal Stoles & Royal Ethnic Wear",
+        subtitle: "Manjusha scroll art silk scarves and hand-woven chanderi dupattas.",
+        image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=1600&q=80",
+        linkText: "Discover Handcrafted Stoles",
+        category: "Stoles & Dupattas"
+      }
+    ];
+
+    function getBanners() {
+      return JSON.parse(localStorage.getItem("angaworld_banners")) || DEFAULT_BANNERS;
+    }
+
+    function saveBanners(banners) {
+      localStorage.setItem("angaworld_banners", JSON.stringify(banners));
+      renderBanners();
+    }
+
+    function renderBanners() {
+      const banners = getBanners();
+      const container = document.getElementById("bannersList");
+      container.innerHTML = banners.map((b, idx) => `
+        <div style="display: flex; gap: 20px; align-items: center; background: #FFF; border: 1px solid #DDD; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
+          <img src="${b.image}" style="width: 180px; height: 90px; object-fit: cover; border-radius: 6px;" />
+          <div style="flex-grow: 1;">
+            <h4 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">${b.title}</h4>
+            <p style="font-size: 13px; color: var(--text-secondary); margin: 3px 0;">${b.subtitle}</p>
+            <span style="font-size: 11px; background: #EAEAEA; padding: 2px 8px; border-radius: 4px;">Category: ${b.category}</span>
+          </div>
+          <button class="btn-del" onclick="deleteBanner(${idx})">Delete Banner</button>
+        </div>
+      `).join('');
+    }
+
+    function handleAddBanner(e) {
+      e.preventDefault();
+      const banners = getBanners();
+      const newBanner = {
+        title: document.getElementById("bTitle").value.trim(),
+        category: document.getElementById("bCategory").value,
+        subtitle: document.getElementById("bSubtitle").value.trim(),
+        image: document.getElementById("bImage").value.trim(),
+        linkText: document.getElementById("bLinkText").value.trim()
+      };
+      banners.push(newBanner);
+      saveBanners(banners);
+      document.getElementById("bannerForm").reset();
+      alert("✓ Promotional Banner added and published to Storefront Carousel!");
+    }
+
+    function deleteBanner(idx) {
+      if (confirm("Remove this promotional banner from the homepage carousel?")) {
+        const banners = getBanners();
+        banners.splice(idx, 1);
+        saveBanners(banners);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", renderBanners);
+  </script>
+</body>
+</html>

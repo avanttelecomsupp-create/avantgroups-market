@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AngaWorld Merchant Control Panel | Product & Inventory Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #F8F9FA;">
+
+  <!-- Header -->
+  <header class="amazon-header">
+    <div class="nav-main">
+      <a href="index.html" class="nav-logo-link">
+        <div class="logo-icon-emblem">A</div>
+        <div class="logo-text-group">
+          <div class="logo-title">Anga<span>World</span></div>
+          <div class="logo-tagline">Merchant Control Panel</div>
+        </div>
+      </a>
+
+      <div style="color: #DDD; font-size: 13px; font-weight: 600; margin-left: 20px;">
+        🏛️ Artisan Central | Inventory & Media Manager
+      </div>
+
+      <div class="nav-right-items" style="margin-left: auto;">
+        <a href="index.html" class="nav-item">
+          <div class="nav-small">Preview</div>
+          <div class="nav-bold">🛍️ View Storefront</div>
+        </a>
+        <a href="banner-manager.html" class="nav-item">
+          <div class="nav-small">Marketing</div>
+          <div class="nav-bold">🖼️ Banner Manager</div>
+        </a>
+        <a href="cart.html" class="nav-item">
+          <div class="nav-small">Orders</div>
+          <div class="nav-bold">🛒 Cart & Checkout</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Layout -->
+  <main class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <a href="#dashboard" class="admin-nav-item active">📊 Overview & Metrics</a>
+      <a href="#upload-section" class="admin-nav-item">📦 Upload New Product</a>
+      <a href="#inventory-section" class="admin-nav-item">📋 Product Catalog</a>
+      <a href="banner-manager.html" class="admin-nav-item">🖼️ Promotional Banners</a>
+      <a href="index.html" class="admin-nav-item">🌐 Go to Live Website</a>
+      
+      <div style="margin-top: 30px; padding: 14px; background: #FFF9F6; border: 1px solid var(--ethnic-terracotta); border-radius: 6px; font-size: 12px;">
+        <strong style="color: var(--ethnic-terracotta);">Automatic Resizer Active:</strong>
+        <p style="margin-top: 4px; color: #555;">All uploaded images (up to 5 photos) are automatically converted and centered onto an 800×800 square canvas so every product aligns uniformly.</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="admin-main-content">
+      
+      <!-- Metrics Overview -->
+      <section class="admin-card" id="dashboard">
+        <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">Catalog Summary & Health</h2>
+        <div class="stats-row">
+          <div class="stat-card">
+            <p>Live Products in Catalog</p>
+            <h3 id="statTotalAdmin">0</h3>
+          </div>
+          <div class="stat-card">
+            <p>Total Units in Stock</p>
+            <h3 id="statStockAdmin">0</h3>
+          </div>
+          <div class="stat-card">
+            <p>Total Inventory Valuation</p>
+            <h3 id="statValuationAdmin">₹0</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Upload Product Form -->
+      <section class="admin-card" id="upload-section">
+        <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">📦 Upload New Ethnic Product</h2>
+        <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 20px;">
+          Add authentic handloom weaves, folk paintings, or pottery. Supports up to 5 photos with automatic square aspect-ratio normalization and promotional video links.
+        </p>
+
+        <form id="adminUploadForm" onsubmit="handleProductUpload(event)">
+          <!-- Basic Info -->
+          <div class="form-group">
+            <label>Product Title / Name (Amazon format) *</label>
+            <input type="text" id="admTitle" required placeholder="e.g. Pure Bhagalpuri Tussar Silk Saree with Contrast Zari Temple Border" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Category *</label>
+              <select id="admCategory" required>
+                <option value="Handloom Sarees">Handloom Sarees</option>
+                <option value="Stoles & Dupattas">Stoles & Dupattas</option>
+                <option value="Home Decor">Home Decor & Pottery</option>
+                <option value="Ethnic Apparel">Ethnic Apparel</option>
+                <option value="Folk Paintings">Folk Paintings & Wall Art</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Artisan Origin & Cluster *</label>
+              <input type="text" id="admOrigin" required placeholder="e.g. Bhagalpur, Bihar (Anga Region)" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Selling Price (₹) *</label>
+              <input type="number" id="admPrice" required min="1" placeholder="4899" />
+            </div>
+            <div class="form-group">
+              <label>MRP / Strikethrough Price (₹)</label>
+              <input type="number" id="admMrp" placeholder="7499" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Stock Quantity Available *</label>
+              <input type="number" id="admStock" required min="1" placeholder="20" />
+            </div>
+            <div class="form-group">
+              <label>SKU / Batch Code</label>
+              <input type="text" id="admSku" placeholder="AW-TS-GLD-01" />
+            </div>
+          </div>
+
+          <!-- Media Upload Section (Max 5 Photos + Auto Resizing) -->
+          <div style="background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; margin: 16px 0;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
+              📸 Product Images (Maximum 5 Photos — Auto-Fitting Engine)
+            </h3>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+              Upload local photos or paste image URLs. Our client-side canvas engine automatically fits, crops, and centers all uploaded photos to standard uniform square dimensions (800×800) so they match existing products perfectly.
+            </p>
+
+            <div class="upload-dropzone" onclick="document.getElementById('fileUploadInput').click()">
+              <div style="font-size: 32px; margin-bottom: 8px;">📷</div>
+              <strong>Click to Select Photos from Device (Max 5)</strong>
+              <div style="font-size: 12px; color: #777; margin-top: 4px;">Supports JPG, PNG, WEBP — Auto Resized to 800x800 square</div>
+              <input type="file" id="fileUploadInput" multiple accept="image/*" style="display: none;" onchange="handleFileSelect(event)" />
+            </div>
+
+            <!-- Previews -->
+            <div class="preview-grid" id="imagePreviewGrid">
+              <!-- Rendered by admin.js -->
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+              <label>Or Add Image Web URL (Fallback / External Link)</label>
+              <div style="display: flex; gap: 8px;">
+                <input type="url" id="admExternalUrl" placeholder="https://images.unsplash.com/..." />
+                <button type="button" class="filter-btn" style="background: var(--amazon-yellow); border: none;" onclick="addUrlImage()">+ Add Image URL</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Upload Option -->
+          <div style="background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; margin: 16px 0;">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
+              🎥 Product Craft Video / Artisan Reel (Optional)
+            </h3>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">
+              Add a direct MP4 video link or YouTube embed of the handloom weaving or pottery craft in action.
+            </p>
+            <div class="form-group">
+              <label>Video URL (MP4 / Web Video / YouTube)</label>
+              <input type="url" id="admVideoUrl" placeholder="https://www.w3schools.com/html/mov_bbb.mp4" oninput="previewVideo(this.value)" />
+            </div>
+            <div id="videoPreviewBox" style="display: none; margin-top: 10px;">
+              <video id="videoPreviewPlayer" controls style="max-width: 100%; height: 200px; border-radius: 6px;"></video>
+            </div>
+          </div>
+
+          <!-- Specifications & Description -->
+          <div class="form-group">
+            <label>Detailed Craft Description & Provenance *</label>
+            <textarea id="admDesc" rows="4" required placeholder="Describe yarn quality, loom type, master weaver details, cultural significance, and wash care instructions..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" style="background: var(--amazon-orange); color: #fff; font-size: 16px; padding: 12px;">
+            ✓ Publish Product to Live Storefront
+          </button>
+        </form>
+      </section>
+
+      <!-- Live Inventory Management Table -->
+      <section class="admin-card" id="inventory-section">
+        <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">📋 Current Live Inventory</h2>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title & Origin</th>
+                <th>Category</th>
+                <th>Selling Price</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminInventoryTable">
+              <!-- Rendered by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="amazon-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
+    </div>
+  </footer>
+
+  <script src="products-data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
