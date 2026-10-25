@@ -4,7 +4,965 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AngaWorld Merchant Control Panel | Product & Inventory Manager</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+/* ========================================================
+   ANGAWORLD - AMAZON STYLE ETHNIC E-COMMERCE PLATFORM
+   Palette: Amazon Dark Nav (#131921), Sub-nav (#232f3e), 
+            Ethnic Terracotta Accent (#D95B30), Gold (#FF9900)
+   ======================================================== */
+
+:root {
+  --nav-bg: #131921;
+  --nav-sub: #232f3e;
+  --nav-hover: #37475a;
+  --ethnic-terracotta: #D95B30;
+  --ethnic-gold: #F4A261;
+  --amazon-yellow: #FFD814;
+  --amazon-yellow-hover: #F7CA00;
+  --amazon-orange: #FF9900;
+  --amazon-orange-hover: #FA8900;
+  --body-bg: #EAEDED;
+  --card-bg: #FFFFFF;
+  --text-primary: #0F1111;
+  --text-secondary: #565959;
+  --link-blue: #007185;
+  --link-hover: #C7511F;
+  --prime-blue: #00A8E1;
+  --border-color: #D5D9D9;
+  --border-light: #E7E7E7;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+  --success: #2E7D32;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--text-primary);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+a {
+  color: var(--link-blue);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ================= HEADER & NAV ================= */
+.amazon-header {
+  background-color: var(--nav-bg);
+  color: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+  height: 60px;
+}
+
+/* Logo */
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+.nav-logo-link:hover {
+  border-color: #FFFFFF;
+}
+
+.logo-icon-emblem {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #D95B30, #FF9900);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(217,91,48,0.4);
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+}
+.logo-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+}
+.logo-title span {
+  color: var(--amazon-orange);
+}
+.logo-tagline {
+  font-size: 10px;
+  color: #CCC;
+  letter-spacing: 0.5px;
+}
+
+/* Location pin */
+.nav-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-location:hover {
+  border-color: #FFFFFF;
+}
+.loc-small {
+  font-size: 11px;
+  color: #CCC;
+}
+.loc-bold {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Search Bar (Amazon Style) */
+.nav-search-bar {
+  display: flex;
+  flex-grow: 1;
+  max-width: 900px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.nav-search-bar:focus-within {
+  box-shadow: 0 0 0 3px #F90;
+}
+.search-category-select {
+  background: #E6E6E6;
+  border: none;
+  padding: 0 10px;
+  font-size: 12px;
+  color: #333;
+  border-right: 1px solid #CCC;
+  cursor: pointer;
+  outline: none;
+}
+.search-input {
+  flex-grow: 1;
+  border: none;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+}
+.search-btn {
+  background-color: var(--amazon-yellow);
+  border: none;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 16px;
+}
+.search-btn:hover {
+  background-color: var(--amazon-yellow-hover);
+}
+
+/* Right Nav Links */
+.nav-right-items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-item:hover {
+  border-color: #FFFFFF;
+}
+.nav-small {
+  font-size: 11px;
+  color: #CCC;
+}
+.nav-bold {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cart-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+.cart-badge {
+  color: var(--amazon-orange);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* Secondary Sub-Nav Bar */
+.nav-sub-bar {
+  background-color: var(--nav-sub);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 38px;
+  overflow-x: auto;
+  gap: 8px;
+}
+.sub-link {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.sub-link:hover {
+  border-color: #FFFFFF;
+}
+.sub-link.highlight {
+  color: var(--amazon-orange);
+  font-weight: 700;
+}
+
+/* ================= BANNER CAROUSEL ================= */
+.carousel-container {
+  position: relative;
+  max-width: 1500px;
+  margin: 0 auto;
+  height: 340px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+.carousel-slide.active {
+  opacity: 1;
+  position: relative;
+}
+.carousel-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(234, 237, 237, 0) 0%, rgba(234, 237, 237, 1) 100%);
+  pointer-events: none;
+}
+.carousel-content {
+  position: relative;
+  z-index: 2;
+  margin-left: 60px;
+  background: rgba(19, 25, 33, 0.88);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  border-left: 5px solid var(--ethnic-terracotta);
+  max-width: 520px;
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+}
+.carousel-content h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #FFFFFF;
+}
+.carousel-content p {
+  font-size: 14px;
+  color: #E2E8F0;
+  margin-bottom: 14px;
+}
+.btn-carousel {
+  display: inline-block;
+  background: var(--amazon-yellow);
+  color: #111;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.btn-carousel:hover {
+  background: var(--amazon-yellow-hover);
+  text-decoration: none;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #ccc;
+  width: 44px;
+  height: 60px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: var(--radius-sm);
+}
+.carousel-btn:hover {
+  background: #FFF;
+}
+.carousel-btn.prev { left: 16px; }
+.carousel-btn.next { right: 16px; }
+
+/* ================= 4-CARD WIDGET ROWS ================= */
+.widgets-row {
+  max-width: 1480px;
+  margin: -60px auto 24px;
+  position: relative;
+  z-index: 5;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 20px;
+}
+
+.widget-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.widget-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+.widget-quad-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.quad-item img {
+  width: 100%;
+  height: 105px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+.quad-item span {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  margin-top: 4px;
+}
+.widget-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--link-blue);
+}
+
+/* ================= INFINITE SCROLL CATALOG ================= */
+.catalog-section {
+  max-width: 1480px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+.catalog-header {
+  background: #FFF;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.catalog-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.catalog-filter-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  background: #F0F2F2;
+  border: 1px solid #D5D9D9;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: #FFF;
+  border-color: var(--ethnic-terracotta);
+  color: var(--ethnic-terracotta);
+}
+
+/* Amazon Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.product-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color);
+}
+
+/* Standardized Uniform Aspect Ratio Box */
+.card-media-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #F8F9FA;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.card-media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.product-card:hover .card-media-box img {
+  transform: scale(1.03);
+}
+
+.badge-artisan-origin {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(19, 25, 33, 0.85);
+  color: #FFF;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+}
+.badge-deal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #CC0C39;
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
+.product-title {
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ratings-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.stars {
+  color: #FFA41C;
+  font-size: 13px;
+}
+.review-count {
+  font-size: 12px;
+  color: var(--link-blue);
+}
+
+.prime-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.badge-anga-express {
+  background: #002F6C;
+  color: #FFF;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-style: italic;
+}
+.prime-delivery {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.price-symbol {
+  font-size: 12px;
+  font-weight: 700;
+  vertical-align: top;
+}
+.price-main {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.price-mrp {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+.price-discount {
+  font-size: 13px;
+  color: #CC0C39;
+  font-weight: 700;
+}
+
+.btn-add-cart {
+  background: var(--amazon-yellow);
+  border: 1px solid #FCD200;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0F1111;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto;
+  box-shadow: 0 2px 5px rgba(213,217,217,.5);
+  transition: background 0.15s;
+}
+.btn-add-cart:hover {
+  background: var(--amazon-yellow-hover);
+}
+
+/* Infinite Scroll Loader */
+.infinite-loader {
+  text-align: center;
+  padding: 30px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #CCC;
+  border-top-color: var(--amazon-orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= CART PAGE STYLING ================= */
+.cart-layout {
+  max-width: 1440px;
+  margin: 20px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.cart-main-box {
+  background: #FFF;
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+.cart-side-box {
+  background: #FFF;
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+}
+.cart-item-row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.cart-item-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+.cart-qty-select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #CCC;
+  font-size: 13px;
+  outline: none;
+}
+.btn-checkout-proceed {
+  background: var(--amazon-yellow);
+  border: 1px solid #FCD200;
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 14px;
+}
+.btn-checkout-proceed:hover {
+  background: var(--amazon-yellow-hover);
+}
+
+/* ================= ADMIN CONTROL PANEL ================= */
+.admin-layout {
+  max-width: 1440px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.admin-sidebar {
+  background: #FFF;
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+}
+.admin-nav-item {
+  display: block;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.admin-nav-item.active, .admin-nav-item:hover {
+  background: #F0F2F2;
+  color: var(--ethnic-terracotta);
+}
+
+.admin-card {
+  background: #FFF;
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: white;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+.stat-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+.stat-card h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0.25rem;
+}
+
+.upload-dropzone {
+  border: 2px dashed #D95B30;
+  border-radius: var(--radius-md);
+  padding: 30px;
+  text-align: center;
+  background: #FFF9F6;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background 0.2s;
+}
+.upload-dropzone:hover {
+  background: #FFF0EB;
+}
+
+.preview-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.preview-thumb-box {
+  width: 90px;
+  height: 90px;
+  border-radius: 6px;
+  border: 1px solid #CCC;
+  position: relative;
+  overflow: hidden;
+  background: #FAFAFA;
+}
+.preview-thumb-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.remove-thumb-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0,0,0,0.6);
+  color: #FFF;
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #CCC;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  background: #FAFAFA;
+}
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+  border-color: var(--amazon-orange);
+  background: #FFFFFF;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.btn-submit {
+  width: 100%;
+  background: var(--amazon-orange);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 0.5rem;
+}
+.btn-submit:hover {
+  background: var(--amazon-orange-hover);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+th, td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+th {
+  background: #F8F9FA;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.table-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.badge-stock {
+  background: #E8F5E9;
+  color: var(--success);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+.btn-del {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: none;
+  padding: 0.35rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-del:hover {
+  background: #FCA5A5;
+}
+
+/* ================= FOOTER ================= */
+.amazon-footer {
+  margin-top: 60px;
+}
+.footer-back-to-top {
+  background: var(--nav-hover);
+  color: #FFF;
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.footer-back-to-top:hover {
+  background: #485769;
+}
+.footer-links-grid {
+  background: var(--nav-sub);
+  color: #DDD;
+  padding: 40px 16px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+.footer-col h4 {
+  color: #FFF;
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col ul li a {
+  color: #DDD;
+  font-size: 12px;
+}
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+.footer-bottom {
+  background: var(--nav-bg);
+  padding: 24px;
+  text-align: center;
+  color: #999;
+  font-size: 11px;
+}
+
+</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -224,7 +1182,342 @@
     </div>
   </footer>
 
-  <script src="products-data.js"></script>
-  <script src="admin.js"></script>
+  <script>
+// AngaWorld Initial Ethnic Product Catalog
+const INITIAL_PRODUCTS = [
+  {
+    id: "AW-1001",
+    title: "Pure Bhagalpuri Handloom Tussar Silk Saree with Zari Border (Unstitched Blouse Piece)",
+    brand: "Anga Bunkar Guild",
+    category: "Handloom Sarees",
+    origin: "Bhagalpur, Bihar",
+    rating: 4.9,
+    reviewsCount: 1420,
+    price: 4899,
+    mrp: 7499,
+    discount: "35% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 18,
+    images: [
+      "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Best Seller", "GI Tagged Handloom"],
+    description: "Authentic Bhagalpuri Tussar silk revered worldwide as the 'Queen of All Silks'. Known for its natural golden sheen, breathable texture, and hand-woven artisanal elegance directly from the master weavers of the Anga region."
+  },
+  {
+    id: "AW-1002",
+    title: "Handcrafted Madhubani Painting Pure Silk Dupatta - Kachni Tree of Life Art",
+    brand: "Mithila-Anga Heritage",
+    category: "Stoles & Dupattas",
+    origin: "Madhubani-Bhagalpur Cluster",
+    rating: 4.8,
+    reviewsCount: 890,
+    price: 2450,
+    mrp: 3500,
+    discount: "30% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 25,
+    images: [
+      "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Amazon's Choice", "100% Handpainted"],
+    description: "Detailed handpainted motifs depicting the sacred Tree of Life and river ecosystem. Painted with traditional bamboo nibs and natural organic pigments by master women artisans."
+  },
+  {
+    id: "AW-1003",
+    title: "Handcrafted Terracotta & Dokra Brass Fusion Floral Urli Bowl for Home Festive Decor",
+    brand: "Sultanganj Potter's Guild",
+    category: "Home Decor",
+    origin: "Sultanganj, Bihar",
+    rating: 4.7,
+    reviewsCount: 520,
+    price: 1399,
+    mrp: 1999,
+    discount: "30% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 32,
+    images: [
+      "https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Eco-Friendly Craft"],
+    description: "Ancient terracotta hand-thrown pottery harmonized with Dokra lost-wax brass ornamentation. Designed for floating flower petals, floating diyas, and welcoming positivity."
+  },
+  {
+    id: "AW-1004",
+    title: "Manjusha Folk Art Ceremonial Silk Scarf - Authentic Anga Heritage Line Art",
+    brand: "Angika Kala Sangam",
+    category: "Stoles & Dupattas",
+    origin: "Anga Mahajanapada Crafts",
+    rating: 4.9,
+    reviewsCount: 310,
+    price: 1850,
+    mrp: 2600,
+    discount: "29% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 14,
+    images: [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Heritage Folk Art"],
+    description: "Manjusha art is one of the world's oldest continuous narrative folk arts hailing from the ancient kingdom of Anga. Featuring signature pink, green, and yellow floral-snake borders."
+  },
+  {
+    id: "AW-1005",
+    title: "Handcrafted Brass Peacock Temple Diya Oil Lamp (Solid Cast Vintage Finish)",
+    brand: "Heritage Metalcrafts",
+    category: "Home Decor",
+    origin: "Mirzapur-Anga Craftsmen",
+    rating: 4.8,
+    reviewsCount: 740,
+    price: 2199,
+    mrp: 3200,
+    discount: "31% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 20,
+    images: [
+      "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Festive Essential"],
+    description: "Traditional heavy brass oil lamp featuring an intricately engraved dancing peacock atop a classic lotus base. Cast using sand mold metallurgical casting."
+  },
+  {
+    id: "AW-1006",
+    title: "Royal Chanderi Silk Zari Woven Salwar Suit Material with Banarasi Dupatta",
+    brand: "Bunkar Heritage",
+    category: "Ethnic Apparel",
+    origin: "Central & Eastern Weaving Cluster",
+    rating: 4.7,
+    reviewsCount: 430,
+    price: 3699,
+    mrp: 5499,
+    discount: "33% off",
+    primeEligible: true,
+    inStock: true,
+    stockQty: 15,
+    images: [
+      "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80"
+    ],
+    videoUrl: "",
+    badges: ["Festive Edition"],
+    description: "A timeless unstitched three-piece ethnic suit crafted with luminous Chanderi yarn, adorned with subtle booties and a majestic contrast jacquard dupatta."
+  }
+];
+
+function initializeProducts() {
+  if (!localStorage.getItem("angaworld_products")) {
+    localStorage.setItem("angaworld_products", JSON.stringify(INITIAL_PRODUCTS));
+  }
+}
+initializeProducts();
+
+let uploadedPhotos = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderMetrics();
+  renderInventoryTable();
+});
+
+function getProducts() {
+  return JSON.parse(localStorage.getItem("angaworld_products")) || INITIAL_PRODUCTS;
+}
+
+function saveProducts(prods) {
+  localStorage.setItem("angaworld_products", JSON.stringify(prods));
+  renderMetrics();
+  renderInventoryTable();
+}
+
+function renderMetrics() {
+  const prods = getProducts();
+  const totalUnits = prods.reduce((sum, p) => sum + Number(p.stockQty || p.stock || 0), 0);
+  const totalVal = prods.reduce((sum, p) => sum + (Number(p.price || 0) * Number(p.stockQty || p.stock || 0)), 0);
+
+  document.getElementById("statTotalAdmin").innerText = prods.length;
+  document.getElementById("statStockAdmin").innerText = totalUnits.toLocaleString("en-IN");
+  document.getElementById("statValuationAdmin").innerText = "₹" + totalVal.toLocaleString("en-IN");
+}
+
+function renderInventoryTable() {
+  const prods = getProducts();
+  const tbody = document.getElementById("adminInventoryTable");
+  if (!tbody) return;
+
+  tbody.innerHTML = prods.map((item, idx) => {
+    const primaryImg = (item.images && item.images.length > 0) ? item.images[0] : "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80";
+    return `
+      <tr>
+        <td>
+          <img src="${primaryImg}" class="table-img" alt="${item.title}" onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=100&q=80'" />
+        </td>
+        <td>
+          <strong style="color: var(--text-primary);">${item.title}</strong>
+          <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">📍 ${item.origin || 'Anga'} | ${item.images ? item.images.length : 1} photos</div>
+        </td>
+        <td>${item.category}</td>
+        <td><strong>₹${Number(item.price).toLocaleString("en-IN")}</strong></td>
+        <td><span class="badge-stock">${item.stockQty || item.stock || 10} Units</span></td>
+        <td>
+          <button class="btn-del" onclick="deleteProduct(${idx})">Delete</button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function handleFileSelect(event) {
+  const files = event.target.files;
+  if (!files || !files.length) return;
+
+  const remainingSlots = 5 - uploadedPhotos.length;
+  if (remainingSlots <= 0) {
+    alert("Maximum of 5 photos reached. Remove one before adding more.");
+    return;
+  }
+
+  const filesToProcess = Array.from(files).slice(0, remainingSlots);
+
+  filesToProcess.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement("canvas");
+        const TARGET_SIZE = 800;
+        canvas.width = TARGET_SIZE;
+        canvas.height = TARGET_SIZE;
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, TARGET_SIZE, TARGET_SIZE);
+
+        let srcX = 0, srcY = 0, srcW = img.width, srcH = img.height;
+        if (img.width > img.height) {
+          srcX = (img.width - img.height) / 2;
+          srcW = img.height;
+        } else {
+          srcY = (img.height - img.width) / 2;
+          srcH = img.width;
+        }
+
+        ctx.drawImage(img, srcX, srcY, srcW, srcH, 0, 0, TARGET_SIZE, TARGET_SIZE);
+        const normalizedDataUrl = canvas.toDataURL("image/jpeg", 0.88);
+        if (uploadedPhotos.length < 5) {
+          uploadedPhotos.push(normalizedDataUrl);
+          updatePreviewGrid();
+        }
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  event.target.value = "";
+}
+
+function addUrlImage() {
+  const input = document.getElementById("admExternalUrl");
+  const url = input.value.trim();
+  if (!url) return;
+
+  if (uploadedPhotos.length >= 5) {
+    alert("Maximum of 5 photos reached.");
+    return;
+  }
+
+  uploadedPhotos.push(url);
+  input.value = "";
+  updatePreviewGrid();
+}
+
+function updatePreviewGrid() {
+  const grid = document.getElementById("imagePreviewGrid");
+  grid.innerHTML = uploadedPhotos.map((url, idx) => `
+    <div class="preview-thumb-box">
+      <img src="${url}" alt="Product Photo ${idx+1}" />
+      <button type="button" class="remove-thumb-btn" onclick="removePhoto(${idx})">✕</button>
+    </div>
+  `).join('');
+}
+
+function removePhoto(idx) {
+  uploadedPhotos.splice(idx, 1);
+  updatePreviewGrid();
+}
+
+function previewVideo(url) {
+  const box = document.getElementById("videoPreviewBox");
+  const player = document.getElementById("videoPreviewPlayer");
+  if (url && (url.endsWith(".mp4") || url.endsWith(".webm") || url.includes("video"))) {
+    box.style.display = "block";
+    player.src = url;
+  } else {
+    box.style.display = "none";
+  }
+}
+
+function handleProductUpload(e) {
+  e.preventDefault();
+
+  if (uploadedPhotos.length === 0) {
+    alert("Please upload at least 1 product photo.");
+    return;
+  }
+
+  const prods = getProducts();
+  const price = Number(document.getElementById("admPrice").value);
+  const mrp = Number(document.getElementById("admMrp").value) || Math.round(price * 1.35);
+  const discountPct = Math.round(((mrp - price) / mrp) * 100) + "% off";
+
+  const newProduct = {
+    id: "AW-" + Date.now().toString().slice(-4),
+    title: document.getElementById("admTitle").value.trim(),
+    brand: "Anga Artisans Guild",
+    category: document.getElementById("admCategory").value,
+    origin: document.getElementById("admOrigin").value.trim(),
+    rating: 4.9,
+    reviewsCount: 1,
+    price: price,
+    mrp: mrp,
+    discount: discountPct,
+    primeEligible: true,
+    inStock: true,
+    stockQty: Number(document.getElementById("admStock").value),
+    images: [...uploadedPhotos],
+    videoUrl: document.getElementById("admVideoUrl").value.trim(),
+    description: document.getElementById("admDesc").value.trim()
+  };
+
+  prods.unshift(newProduct);
+  saveProducts(prods);
+
+  document.getElementById("adminUploadForm").reset();
+  uploadedPhotos = [];
+  updatePreviewGrid();
+  document.getElementById("videoPreviewBox").style.display = "none";
+
+  alert("✓ Product uploaded successfully! It is now live on the storefront with uniform 800x800 dimensions.");
+  window.location.hash = "inventory-section";
+}
+
+function deleteProduct(index) {
+  if (confirm("Are you sure you want to delete this product from AngaWorld catalog?")) {
+    const prods = getProducts();
+    prods.splice(index, 1);
+    saveProducts(prods);
+  }
+}
+
+</script>
 </body>
 </html>
