@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AngaWorld Banner & Hero Manager | Amazon-Style Promotional Campaigns</title>
+  <title>AngaWorld Banner & Hero Manager | Real-Time Device Upload</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
 /* ========================================================
    ANGAWORLD - AMAZON STYLE ETHNIC E-COMMERCE PLATFORM
@@ -16,6 +19,7 @@
   --nav-sub: #232f3e;
   --nav-hover: #37475a;
   --ethnic-terracotta: #D95B30;
+  --ethnic-terracotta-hover: #BF4C24;
   --ethnic-gold: #F4A261;
   --amazon-yellow: #FFD814;
   --amazon-yellow-hover: #F7CA00;
@@ -44,7 +48,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--body-bg);
   color: var(--text-primary);
   line-height: 1.4;
@@ -77,7 +81,6 @@ a:hover {
   height: 60px;
 }
 
-/* Logo */
 .nav-logo-link {
   display: flex;
   align-items: center;
@@ -124,79 +127,11 @@ a:hover {
   letter-spacing: 0.5px;
 }
 
-/* Location pin */
-.nav-location {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  white-space: nowrap;
-}
-.nav-location:hover {
-  border-color: #FFFFFF;
-}
-.loc-small {
-  font-size: 11px;
-  color: #CCC;
-}
-.loc-bold {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* Search Bar (Amazon Style) */
-.nav-search-bar {
-  display: flex;
-  flex-grow: 1;
-  max-width: 900px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-.nav-search-bar:focus-within {
-  box-shadow: 0 0 0 3px #F90;
-}
-.search-category-select {
-  background: #E6E6E6;
-  border: none;
-  padding: 0 10px;
-  font-size: 12px;
-  color: #333;
-  border-right: 1px solid #CCC;
-  cursor: pointer;
-  outline: none;
-}
-.search-input {
-  flex-grow: 1;
-  border: none;
-  padding: 0 14px;
-  font-size: 15px;
-  outline: none;
-}
-.search-btn {
-  background-color: var(--amazon-yellow);
-  border: none;
-  width: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-size: 16px;
-}
-.search-btn:hover {
-  background-color: var(--amazon-yellow-hover);
-}
-
-/* Right Nav Links */
 .nav-right-items {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  margin-left: auto;
 }
 .nav-item {
   display: flex;
@@ -221,516 +156,20 @@ a:hover {
   font-weight: 700;
 }
 
-.cart-icon-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-}
-.cart-badge {
-  color: var(--amazon-orange);
-  font-size: 16px;
-  font-weight: 800;
-}
-
-/* Secondary Sub-Nav Bar */
-.nav-sub-bar {
-  background-color: var(--nav-sub);
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  height: 38px;
-  overflow-x: auto;
-  gap: 8px;
-}
-.sub-link {
-  color: #FFFFFF;
-  font-size: 13px;
-  font-weight: 500;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-decoration: none;
-}
-.sub-link:hover {
-  border-color: #FFFFFF;
-}
-.sub-link.highlight {
-  color: var(--amazon-orange);
-  font-weight: 700;
-}
-
-/* ================= BANNER CAROUSEL ================= */
-.carousel-container {
-  position: relative;
-  max-width: 1500px;
-  margin: 0 auto;
-  height: 340px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.carousel-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-}
-.carousel-slide.active {
-  opacity: 1;
-  position: relative;
-}
-.carousel-gradient-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 140px;
-  background: linear-gradient(to bottom, rgba(234, 237, 237, 0) 0%, rgba(234, 237, 237, 1) 100%);
-  pointer-events: none;
-}
-.carousel-content {
-  position: relative;
-  z-index: 2;
-  margin-left: 60px;
-  background: rgba(19, 25, 33, 0.88);
-  padding: 24px 32px;
-  border-radius: var(--radius-md);
-  border-left: 5px solid var(--ethnic-terracotta);
-  max-width: 520px;
-  color: #FFFFFF;
-  backdrop-filter: blur(4px);
-}
-.carousel-content h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #FFFFFF;
-}
-.carousel-content p {
-  font-size: 14px;
-  color: #E2E8F0;
-  margin-bottom: 14px;
-}
-.btn-carousel {
-  display: inline-block;
-  background: var(--amazon-yellow);
-  color: #111;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 13px;
-}
-.btn-carousel:hover {
-  background: var(--amazon-yellow-hover);
-  text-decoration: none;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.7);
-  border: 1px solid #ccc;
-  width: 44px;
-  height: 60px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: var(--radius-sm);
-}
-.carousel-btn:hover {
-  background: #FFF;
-}
-.carousel-btn.prev { left: 16px; }
-.carousel-btn.next { right: 16px; }
-
-/* ================= 4-CARD WIDGET ROWS ================= */
-.widgets-row {
-  max-width: 1480px;
-  margin: -60px auto 24px;
-  position: relative;
-  z-index: 5;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 20px;
-}
-
-.widget-card {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.widget-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 14px;
-  color: var(--text-primary);
-}
-.widget-quad-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.quad-item img {
-  width: 100%;
-  height: 105px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-.quad-item span {
-  font-size: 12px;
-  color: var(--text-secondary);
-  display: block;
-  margin-top: 4px;
-}
-.widget-link {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--link-blue);
-}
-
-/* ================= INFINITE SCROLL CATALOG ================= */
-.catalog-section {
-  max-width: 1480px;
-  margin: 0 auto 40px;
-  padding: 0 16px;
-}
-
-.catalog-header {
-  background: #FFF;
-  padding: 16px 20px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 16px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.catalog-header h2 {
-  font-size: 20px;
-  font-weight: 700;
-}
-.catalog-filter-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  background: #F0F2F2;
-  border: 1px solid #D5D9D9;
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.filter-btn.active, .filter-btn:hover {
-  background: #FFF;
-  border-color: var(--ethnic-terracotta);
-  color: var(--ethnic-terracotta);
-}
-
-/* Amazon Product Grid */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.product-card {
-  background: #FFFFFF;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.product-card:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--border-color);
-}
-
-/* Standardized Uniform Aspect Ratio Box */
-.card-media-box {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background-color: #F8F9FA;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-.card-media-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-.product-card:hover .card-media-box img {
-  transform: scale(1.03);
-}
-
-.badge-artisan-origin {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(19, 25, 33, 0.85);
-  color: #FFF;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 3px 7px;
-  border-radius: 3px;
-  letter-spacing: 0.3px;
-}
-.badge-deal {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #CC0C39;
-  color: #FFF;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 3px;
-}
-
-.product-title {
-  font-size: 14px;
-  line-height: 1.35;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.ratings-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-}
-.stars {
-  color: #FFA41C;
-  font-size: 13px;
-}
-.review-count {
-  font-size: 12px;
-  color: var(--link-blue);
-}
-
-.prime-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-.badge-anga-express {
-  background: #002F6C;
-  color: #FFF;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 2px;
-  font-style: italic;
-}
-.prime-delivery {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-.price-symbol {
-  font-size: 12px;
-  font-weight: 700;
-  vertical-align: top;
-}
-.price-main {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.price-mrp {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-decoration: line-through;
-}
-.price-discount {
-  font-size: 13px;
-  color: #CC0C39;
-  font-weight: 700;
-}
-
-.btn-add-cart {
-  background: var(--amazon-yellow);
-  border: 1px solid #FCD200;
-  border-radius: 20px;
-  padding: 8px 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #0F1111;
-  cursor: pointer;
-  width: 100%;
-  margin-top: auto;
-  box-shadow: 0 2px 5px rgba(213,217,217,.5);
-  transition: background 0.15s;
-}
-.btn-add-cart:hover {
-  background: var(--amazon-yellow-hover);
-}
-
-/* Infinite Scroll Loader */
-.infinite-loader {
-  text-align: center;
-  padding: 30px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.spinner {
-  width: 32px;
-  height: 32px;
-  border: 4px solid #CCC;
-  border-top-color: var(--amazon-orange);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* ================= CART PAGE STYLING ================= */
-.cart-layout {
-  max-width: 1440px;
-  margin: 20px auto;
-  padding: 0 16px;
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 24px;
-}
-@media (max-width: 900px) {
-  .cart-layout {
-    grid-template-columns: 1fr;
-  }
-}
-.cart-main-box {
-  background: #FFF;
-  padding: 24px;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-}
-.cart-side-box {
-  background: #FFF;
-  padding: 24px;
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
-  height: fit-content;
-}
-.cart-item-row {
-  display: grid;
-  grid-template-columns: 140px 1fr auto;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-light);
-}
-.cart-item-img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-.cart-qty-select {
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #CCC;
-  font-size: 13px;
-  outline: none;
-}
-.btn-checkout-proceed {
-  background: var(--amazon-yellow);
-  border: 1px solid #FCD200;
-  border-radius: 8px;
-  padding: 12px;
-  width: 100%;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 14px;
-}
-.btn-checkout-proceed:hover {
-  background: var(--amazon-yellow-hover);
-}
-
-/* ================= ADMIN CONTROL PANEL ================= */
+/* ================= ADMIN LAYOUT ================= */
 .admin-layout {
-  max-width: 1440px;
+  max-width: 1400px;
   margin: 24px auto;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 460px 1fr;
   gap: 24px;
 }
-@media (max-width: 900px) {
+
+@media (max-width: 1024px) {
   .admin-layout {
     grid-template-columns: 1fr;
   }
-}
-.admin-sidebar {
-  background: #FFF;
-  border-radius: var(--radius-sm);
-  padding: 20px;
-  box-shadow: var(--shadow-sm);
-  height: fit-content;
-}
-.admin-nav-item {
-  display: block;
-  padding: 10px 14px;
-  color: var(--text-primary);
-  font-weight: 600;
-  border-radius: 6px;
-  margin-bottom: 6px;
-}
-.admin-nav-item.active, .admin-nav-item:hover {
-  background: #F0F2F2;
-  color: var(--ethnic-terracotta);
 }
 
 .admin-card {
@@ -738,81 +177,86 @@ a:hover {
   border-radius: var(--radius-sm);
   padding: 24px;
   box-shadow: var(--shadow-sm);
-  margin-bottom: 24px;
-}
-
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 2rem;
-}
-.stat-card {
-  background: white;
-  padding: 1.25rem;
-  border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
 }
-.stat-card p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-.stat-card h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-top: 0.25rem;
-}
 
+/* Photo Upload Box & Drag Drop */
 .upload-dropzone {
-  border: 2px dashed #D95B30;
+  border: 2px dashed var(--ethnic-terracotta);
   border-radius: var(--radius-md);
-  padding: 30px;
+  padding: 24px 16px;
   text-align: center;
   background: #FFF9F6;
   cursor: pointer;
-  margin-bottom: 16px;
-  transition: background 0.2s;
+  margin-bottom: 14px;
+  transition: all 0.2s ease;
 }
-.upload-dropzone:hover {
+.upload-dropzone:hover, .upload-dropzone.dragover {
   background: #FFF0EB;
+  border-color: var(--ethnic-terracotta-hover);
+  transform: translateY(-1px);
+}
+.upload-icon {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+.upload-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ethnic-terracotta);
+}
+.upload-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
 }
 
-.preview-grid {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-.preview-thumb-box {
-  width: 90px;
-  height: 90px;
-  border-radius: 6px;
-  border: 1px solid #CCC;
-  position: relative;
+/* Preview Box */
+.banner-preview-box {
+  width: 100%;
+  height: 150px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
   overflow: hidden;
-  background: #FAFAFA;
+  margin-bottom: 14px;
+  background: #131921;
+  display: none;
+  position: relative;
 }
-.preview-thumb-box img {
+.banner-preview-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.remove-thumb-btn {
+.banner-preview-badge {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  background: rgba(0,0,0,0.6);
+  top: 8px;
+  left: 8px;
+  background: rgba(0,0,0,0.75);
+  color: #FFF;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.banner-preview-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #DC2626;
   color: #FFF;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 11px;
   cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Form Styling */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -829,7 +273,7 @@ a:hover {
   width: 100%;
   padding: 0.65rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid #CCC;
+  border: 1px solid var(--border-color);
   font-family: inherit;
   font-size: 0.9rem;
   outline: none;
@@ -840,136 +284,176 @@ a:hover {
 .form-group textarea:focus {
   border-color: var(--amazon-orange);
   background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
 }
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 }
+
 .btn-submit {
   width: 100%;
-  background: var(--amazon-orange);
-  color: white;
-  border: none;
-  padding: 0.8rem;
+  background: var(--amazon-yellow);
+  color: #0F1111;
+  border: 1px solid #FCD200;
+  padding: 0.85rem;
   border-radius: 6px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
   margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 .btn-submit:hover {
-  background: var(--amazon-orange-hover);
+  background: var(--amazon-yellow-hover);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.9rem;
+/* Active Banners Display */
+.banner-card-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 18px;
+  height: 165px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-light);
 }
-th, td {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--border-light);
+.banner-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(19, 25, 33, 0.88) 0%, rgba(19, 25, 33, 0.6) 60%, rgba(19, 25, 33, 0.2) 100%);
 }
-th {
-  background: #F8F9FA;
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+.banner-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px 24px;
+  color: #FFF;
+  max-width: 75%;
 }
-.table-img {
-  width: 44px;
-  height: 44px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-.badge-stock {
-  background: #E8F5E9;
-  color: var(--success);
-  padding: 0.2rem 0.5rem;
+.banner-category-tag {
+  background: var(--ethnic-terracotta);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
   border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.banner-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #FFF;
+}
+.banner-card-desc {
+  font-size: 12px;
+  color: #E2E8F0;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.banner-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 .btn-del {
   background: #FEE2E2;
   color: #DC2626;
-  border: none;
-  padding: 0.35rem 0.65rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  border: 1px solid #FECACA;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
 }
 .btn-del:hover {
   background: #FCA5A5;
 }
-
-/* ================= FOOTER ================= */
-.amazon-footer {
-  margin-top: 60px;
-}
-.footer-back-to-top {
-  background: var(--nav-hover);
+.btn-move {
+  background: rgba(255, 255, 255, 0.2);
   color: #FFF;
-  text-align: center;
-  padding: 14px;
-  font-size: 13px;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
 }
-.footer-back-to-top:hover {
-  background: #485769;
+.btn-move:hover {
+  background: rgba(255, 255, 255, 0.35);
 }
-.footer-links-grid {
-  background: var(--nav-sub);
-  color: #DDD;
-  padding: 40px 16px;
+
+.realtime-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E8F5E9;
+  color: #2E7D32;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid #C8E6C9;
 }
-.footer-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #2E7D32;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
 }
-.footer-col h4 {
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #131921;
   color: #FFF;
-  font-size: 15px;
-  margin-bottom: 12px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border-left: 4px solid var(--amazon-orange);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  z-index: 99999;
+  font-size: 13px;
+  font-weight: 600;
+  display: none;
 }
-.footer-col ul {
-  list-style: none;
-}
-.footer-col ul li {
-  margin-bottom: 8px;
-}
-.footer-col ul li a {
-  color: #DDD;
-  font-size: 12px;
-}
-.footer-col ul li a:hover {
-  text-decoration: underline;
-}
-.footer-bottom {
+
+/* Footer */
+.amazon-footer {
+  margin-top: 60px;
   background: var(--nav-bg);
   padding: 24px;
   text-align: center;
   color: #999;
-  font-size: 11px;
+  font-size: 12px;
 }
-
-</style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </style>
 </head>
-<body style="background-color: #F8F9FA;">
+<body>
 
-  <!-- Header -->
+  <!-- Top Amazon Header -->
   <header class="amazon-header">
     <div class="nav-main">
       <a href="index.html" class="nav-logo-link">
@@ -979,88 +463,144 @@ th {
           <div class="logo-tagline">Promotional Banner Manager</div>
         </div>
       </a>
-      <div class="nav-right-items" style="margin-left: auto;">
+
+      <div class="nav-right-items">
+        <div class="realtime-pill">
+          <span class="pulse-dot"></span> Real-Time Sync Active
+        </div>
         <a href="index.html" class="nav-item">
-          <div class="nav-small">Preview</div>
-          <div class="nav-bold">🛍️ View Storefront</div>
+          <span class="nav-small">Preview</span>
+          <span class="nav-bold">🛍️ View Storefront</span>
         </a>
         <a href="admin.html" class="nav-item">
-          <div class="nav-small">Merchant</div>
-          <div class="nav-bold">⚙️ Admin Panel</div>
+          <span class="nav-small">Merchant</span>
+          <span class="nav-bold">⚙️ Admin Panel</span>
         </a>
       </div>
     </div>
   </header>
 
-  <main class="admin-layout" style="grid-template-columns: 1fr;">
+  <main class="admin-layout">
+    
+    <!-- LEFT COLUMN: PHOTO UPLOAD & CAMPAIGN CREATION FORM -->
     <section class="admin-card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+        <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary);">
+          📸 Upload & Publish Banner
+        </h2>
+        <span style="font-size: 11px; color: var(--text-secondary);">Any Device • Anywhere</span>
+      </div>
+
+      <form id="bannerForm" onsubmit="handleBannerSubmit(event)">
+        
+        <!-- 1. PHOTO UPLOAD SECTION (DEVICE / CAMERA / DRAG & DROP) -->
+        <div class="form-group">
+          <label>Banner Photo (From Phone, Tablet, Laptop, or Camera) *</label>
+          <div class="upload-dropzone" id="dropZone" onclick="document.getElementById('bannerFileInput').click()">
+            <div class="upload-icon">📸</div>
+            <div class="upload-title">Click to Select Photo or Take Picture</div>
+            <p class="upload-hint">Drag & drop files here (PNG, JPG, WebP)</p>
+            <p style="font-size: 11px; color: var(--ethnic-terracotta); margin-top: 6px; font-weight: 600;">
+              ⚡ Auto-crops & optimizes to 1600×500 widescreen banner
+            </p>
+            <input type="file" id="bannerFileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event)" />
+          </div>
+        </div>
+
+        <!-- Or Web Image URL option -->
+        <div class="form-group">
+          <label>Or Paste Online Image URL (Unsplash / CDN)</label>
+          <div style="display: flex; gap: 8px;">
+            <input type="url" id="bannerUrlInput" placeholder="https://images.unsplash.com/..." oninput="handleUrlInput(this.value)" />
+            <button type="button" class="btn-move" style="background: var(--nav-sub); color:#fff; padding: 0 14px; font-size: 12px;" onclick="loadFromUrl()">Load</button>
+          </div>
+        </div>
+
+        <!-- Live Photo Preview Box -->
+        <div id="bannerPreviewContainer" class="banner-preview-box">
+          <img id="bannerPreviewImg" src="" alt="Banner Preview" />
+          <span class="banner-preview-badge">✓ Auto-Fitted 1600×500</span>
+          <button type="button" class="banner-preview-remove" onclick="clearSelectedPhoto()" title="Remove photo">✕</button>
+        </div>
+
+        <!-- 2. CAMPAIGN COPY -->
+        <div class="form-group">
+          <label>Banner Headline *</label>
+          <input type="text" id="bannerTitle" required placeholder="e.g. The Grand Anga Handloom Utsav" />
+        </div>
+
+        <div class="form-group">
+          <label>Subtitle / Promotional Description *</label>
+          <textarea id="bannerSubtitle" rows="2" required placeholder="e.g. Authentic Bhagalpuri Tussar Silk, Madhubani Art & Terracotta. Up to 40% Off."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Action Button Text</label>
+            <input type="text" id="bannerBtnText" placeholder="Shop Now" />
+          </div>
+          <div class="form-group">
+            <label>Target Category</label>
+            <select id="bannerCategory">
+              <option value="Handloom Sarees">Handloom Sarees</option>
+              <option value="Home Decor">Home Decor</option>
+              <option value="Stoles & Dupattas">Stoles & Dupattas</option>
+              <option value="Ethnic Apparel">Ethnic Apparel</option>
+              <option value="All">All Categories</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          🚀 Publish Instantly to Storefront Carousel
+        </button>
+      </form>
+    </section>
+
+    <!-- RIGHT COLUMN: ACTIVE BANNERS & REAL-TIME CONTROLS -->
+    <section class="admin-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
         <div>
-          <h1 style="font-size: 22px; font-weight: 700;">🖼️ Hero Banner & Campaign Manager</h1>
-          <p style="color: var(--text-secondary); font-size: 13px; margin-top: 4px;">
-            Manage the top rotating hero banners on the storefront homepage (angaworld.in / angaworld.com).
+          <h2 style="font-size: 20px; font-weight: 700;">Active Storefront Hero Banners</h2>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
+            These banners rotate automatically on the <code>index.html</code> homepage carousel.
           </p>
         </div>
-        <a href="index.html" class="btn-carousel" style="padding: 10px 20px;">View Live Storefront →</a>
-      </div>
-
-      <!-- Add New Banner Form -->
-      <div style="background: #FFF9F6; border: 1px solid var(--ethnic-terracotta); border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-        <h3 style="font-size: 16px; font-weight: 700; color: var(--ethnic-terracotta); margin-bottom: 12px;">+ Add New Promotional Banner</h3>
-        <form id="bannerForm" onsubmit="handleAddBanner(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Banner Campaign Heading *</label>
-              <input type="text" id="bTitle" required placeholder="e.g. Diya & Terracotta Festive Mela" />
-            </div>
-            <div class="form-group">
-              <label>Target Category *</label>
-              <select id="bCategory" required>
-                <option value="Handloom Sarees">Handloom Sarees</option>
-                <option value="Home Decor">Home Decor</option>
-                <option value="Stoles & Dupattas">Stoles & Dupattas</option>
-                <option value="Ethnic Apparel">Ethnic Apparel</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Campaign Subtitle / Discount Pitch *</label>
-            <input type="text" id="bSubtitle" required placeholder="e.g. Direct from Sultanganj potters. Handcrafted brass diyas up to 35% off." />
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label>High-Resolution Banner Image URL (1600x600 recommended) *</label>
-              <input type="url" id="bImage" required placeholder="https://images.unsplash.com/..." />
-            </div>
-            <div class="form-group">
-              <label>Button Action Text *</label>
-              <input type="text" id="bLinkText" required placeholder="Shop Festive Collection" />
-            </div>
-          </div>
-
-          <button type="submit" class="btn-checkout-proceed" style="background: var(--amazon-yellow); width: auto; padding: 10px 24px;">
-            Save & Publish Banner
+        <div style="display: flex; gap: 8px;">
+          <button class="btn-move" style="background: var(--nav-sub); color:#fff; padding: 6px 12px;" onclick="exportBannersJson()">
+            💾 Backup / Export
           </button>
-        </form>
+          <button class="btn-move" style="background: var(--nav-hover); color:#fff; padding: 6px 12px;" onclick="resetDefaultBanners()">
+            ↺ Restore Defaults
+          </button>
+        </div>
       </div>
 
-      <!-- Active Banners List -->
-      <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 14px;">Active Promotional Banners</h3>
+      <!-- Live Broadcast Notice -->
+      <div style="background: #EBF8FF; border: 1px solid #BEE3F8; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; font-size: 12px; color: #2B6CB0; display: flex; align-items: center; gap: 8px;">
+        <span>📡</span>
+        <div>Any changes made here sync across open storefront tabs and browsers in real-time.</div>
+      </div>
+
       <div id="bannersList">
-        <!-- Rendered by banner-manager.js -->
+        <!-- Rendered by JavaScript -->
       </div>
     </section>
+
   </main>
 
   <footer class="amazon-footer">
-    <div class="footer-bottom">
-      <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
-    </div>
+    <p>&copy; 2026 AngaWorld Marketplace. All rights reserved. "Local roots. Global reach."</p>
   </footer>
 
+  <div id="toast" class="toast">✓ Banner updated!</div>
+
   <script>
+    // Real-Time Cross-Tab / Cross-Window Broadcast Channel
+    const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('angaworld_sync') : null;
+
+    let currentImageDataUrl = "";
+
     const DEFAULT_BANNERS = [
       {
         title: "The Grand Anga Handloom Festival",
@@ -1092,38 +632,178 @@ th {
     function saveBanners(banners) {
       localStorage.setItem("angaworld_banners", JSON.stringify(banners));
       renderBanners();
+      // Broadcast real-time event to storefront tabs
+      if (syncChannel) {
+        syncChannel.postMessage({ type: 'BANNERS_UPDATED', banners });
+      }
     }
 
-    function renderBanners() {
-      const banners = getBanners();
-      const container = document.getElementById("bannersList");
-      container.innerHTML = banners.map((b, idx) => `
-        <div style="display: flex; gap: 20px; align-items: center; background: #FFF; border: 1px solid #DDD; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-          <img src="${b.image}" style="width: 180px; height: 90px; object-fit: cover; border-radius: 6px;" />
-          <div style="flex-grow: 1;">
-            <h4 style="font-size: 16px; font-weight: 700; color: var(--text-primary);">${b.title}</h4>
-            <p style="font-size: 13px; color: var(--text-secondary); margin: 3px 0;">${b.subtitle}</p>
-            <span style="font-size: 11px; background: #EAEAEA; padding: 2px 8px; border-radius: 4px;">Category: ${b.category}</span>
-          </div>
-          <button class="btn-del" onclick="deleteBanner(${idx})">Delete Banner</button>
-        </div>
-      `).join('');
+    // Initialize Page
+    document.addEventListener("DOMContentLoaded", () => {
+      renderBanners();
+      setupDragDrop();
+
+      // Listen for updates from other tabs
+      if (syncChannel) {
+        syncChannel.onmessage = (event) => {
+          if (event.data && event.data.type === 'BANNERS_UPDATED') {
+            renderBanners();
+            showToast("📡 Banners synchronized from another device/tab");
+          }
+        };
+      }
+    });
+
+    // Drag and Drop Setup
+    function setupDragDrop() {
+      const dropZone = document.getElementById("dropZone");
+      if (!dropZone) return;
+
+      ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add('dragover');
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove('dragover');
+        });
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const files = e.dataTransfer.files;
+        if (files && files.length > 0) {
+          processImageFile(files[0]);
+        }
+      });
     }
 
-    function handleAddBanner(e) {
-      e.preventDefault();
-      const banners = getBanners();
-      const newBanner = {
-        title: document.getElementById("bTitle").value.trim(),
-        category: document.getElementById("bCategory").value,
-        subtitle: document.getElementById("bSubtitle").value.trim(),
-        image: document.getElementById("bImage").value.trim(),
-        linkText: document.getElementById("bLinkText").value.trim()
+    // Photo Upload Handler with Canvas Auto-Resizer (1600x500 Widescreen)
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if (file) {
+        processImageFile(file);
+      }
+    }
+
+    function processImageFile(file) {
+      if (!file.type.startsWith('image/')) {
+        alert("Please select a valid image file (JPG, PNG, WebP).");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement("canvas");
+          const TARGET_WIDTH = 1600;
+          const TARGET_HEIGHT = 500;
+          canvas.width = TARGET_WIDTH;
+          canvas.height = TARGET_HEIGHT;
+          const ctx = canvas.getContext("2d");
+
+          // Clean background
+          ctx.fillStyle = "#131921";
+          ctx.fillRect(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
+
+          // Calculate center-crop cover scaling
+          const imgAspect = img.width / img.height;
+          const targetAspect = TARGET_WIDTH / TARGET_HEIGHT;
+          let renderW, renderH, offsetX, offsetY;
+
+          if (imgAspect > targetAspect) {
+            renderH = TARGET_HEIGHT;
+            renderW = img.width * (TARGET_HEIGHT / img.height);
+            offsetX = (TARGET_WIDTH - renderW) / 2;
+            offsetY = 0;
+          } else {
+            renderW = TARGET_WIDTH;
+            renderH = img.height * (TARGET_WIDTH / img.width);
+            offsetX = 0;
+            offsetY = (TARGET_HEIGHT - renderH) / 2;
+          }
+
+          ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+
+          // Quality compressed JPEG data URL for fast real-time loading
+          currentImageDataUrl = canvas.toDataURL("image/jpeg", 0.88);
+          showPhotoPreview(currentImageDataUrl);
+          showToast("✓ Photo auto-fitted to 1600×500 widescreen banner!");
+        };
+        img.src = e.target.result;
       };
-      banners.push(newBanner);
+      reader.readAsDataURL(file);
+    }
+
+    function handleUrlInput(val) {
+      if (val && (val.startsWith("http://") || val.startsWith("https://"))) {
+        currentImageDataUrl = val.trim();
+        showPhotoPreview(currentImageDataUrl);
+      }
+    }
+
+    function loadFromUrl() {
+      const val = document.getElementById("bannerUrlInput").value.trim();
+      if (!val) {
+        alert("Please enter a valid image URL first.");
+        return;
+      }
+      currentImageDataUrl = val;
+      showPhotoPreview(val);
+      showToast("✓ Image loaded from web URL");
+    }
+
+    function showPhotoPreview(src) {
+      const container = document.getElementById("bannerPreviewContainer");
+      const img = document.getElementById("bannerPreviewImg");
+      img.src = src;
+      container.style.display = "block";
+    }
+
+    function clearSelectedPhoto() {
+      currentImageDataUrl = "";
+      document.getElementById("bannerFileInput").value = "";
+      document.getElementById("bannerUrlInput").value = "";
+      document.getElementById("bannerPreviewContainer").style.display = "none";
+    }
+
+    // Submit & Publish to Carousel
+    function handleBannerSubmit(e) {
+      e.preventDefault();
+
+      if (!currentImageDataUrl) {
+        alert("Please choose a photo from your device or enter an image URL.");
+        return;
+      }
+
+      const title = document.getElementById("bannerTitle").value.trim();
+      const subtitle = document.getElementById("bannerSubtitle").value.trim();
+      const linkText = document.getElementById("bannerBtnText").value.trim() || "Shop Collection";
+      const category = document.getElementById("bannerCategory").value;
+
+      const newBanner = {
+        title,
+        subtitle,
+        image: currentImageDataUrl,
+        linkText,
+        category,
+        uploadedAt: new Date().toISOString()
+      };
+
+      const banners = getBanners();
+      banners.unshift(newBanner);
       saveBanners(banners);
+
+      // Reset form
       document.getElementById("bannerForm").reset();
-      alert("✓ Promotional Banner added and published to Storefront Carousel!");
+      clearSelectedPhoto();
+      showToast("🚀 Banner published to homepage carousel in real-time!");
     }
 
     function deleteBanner(idx) {
@@ -1131,10 +811,78 @@ th {
         const banners = getBanners();
         banners.splice(idx, 1);
         saveBanners(banners);
+        showToast("Banner removed from carousel");
       }
     }
 
-    document.addEventListener("DOMContentLoaded", renderBanners);
+    function moveBanner(idx, direction) {
+      const banners = getBanners();
+      const targetIdx = idx + direction;
+      if (targetIdx < 0 || targetIdx >= banners.length) return;
+      const temp = banners[idx];
+      banners[idx] = banners[targetIdx];
+      banners[targetIdx] = temp;
+      saveBanners(banners);
+    }
+
+    function resetDefaultBanners() {
+      if (confirm("Reset to original default AngaWorld heritage banners?")) {
+        saveBanners(DEFAULT_BANNERS);
+        showToast("Reset to default banners");
+      }
+    }
+
+    function exportBannersJson() {
+      const banners = getBanners();
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(banners, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "angaworld_banners_backup.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("💾 Banners JSON configuration exported");
+    }
+
+    function renderBanners() {
+      const container = document.getElementById("bannersList");
+      const banners = getBanners();
+
+      if (!banners.length) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; background: #FAFAFA; border-radius: 8px;">
+            <p style="color: var(--text-secondary); margin-bottom: 10px;">No promotional banners currently active.</p>
+            <button class="btn-move" style="background: var(--amazon-yellow); color: #111; padding: 8px 16px;" onclick="resetDefaultBanners()">Load Default Banners</button>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = banners.map((b, idx) => `
+        <div class="banner-card-item" style="background-image: url('${b.image}');">
+          <div class="banner-card-overlay"></div>
+          <div class="banner-card-content">
+            <span class="banner-category-tag">${b.category}</span>
+            <h3 class="banner-card-title">${b.title}</h3>
+            <p class="banner-card-desc">${b.subtitle}</p>
+            <div class="banner-actions">
+              <span style="background: var(--amazon-yellow); color: #111; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">
+                ${b.linkText} →
+              </span>
+              <button type="button" class="btn-del" onclick="deleteBanner(${idx})">Delete</button>
+              ${idx > 0 ? `<button type="button" class="btn-move" onclick="moveBanner(${idx}, -1)" title="Move Up">▲</button>` : ''}
+              ${idx < banners.length - 1 ? `<button type="button" class="btn-move" onclick="moveBanner(${idx}, 1)" title="Move Down">▼</button>` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showToast(msg) {
+      let toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 3000);
+    }
   </script>
 </body>
 </html>
